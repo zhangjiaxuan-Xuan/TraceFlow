@@ -1,0 +1,941 @@
+{
+  "version": "2026-05-03",
+  "label_policy": "Use HDF5 primitive stems converted to readable English labels. Do not relabel primitives to paper-only names.",
+  "tasks": [
+    {
+      "task_id": 1,
+      "data_dir": "1_cookies_tomato_basket_dataset",
+      "suite": "Sequence",
+      "task_name": "Put Cookies Sauce into Target Container in Order",
+      "memory_type": "S",
+      "challenge": "sequence",
+      "brief_description": "Pick and place cookies into the target container, then pick and place tomato sauce into the same target container.",
+      "task_block": "This is a sequential long-horizon task: first place cookies into the target container (the primitive labels call it basket), then place tomato sauce into the same target container. Remember whether cookies have already been placed; after that, switch to tomato sauce without skipping or repeating.",
+      "primitive_order": [
+        {
+          "stem": "pick_cookies",
+          "label": "pick cookies"
+        },
+        {
+          "stem": "place_cookies_into_basket",
+          "label": "place cookies into basket"
+        },
+        {
+          "stem": "pick_tomato_sauce",
+          "label": "pick tomato sauce"
+        },
+        {
+          "stem": "place_tomato_into_basket",
+          "label": "place tomato into basket"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. The robot operates near the center of the table; a brown open target container is near the rear-left. The cookies are small block-like objects near the middle of the table, and the tomato sauce is a red-and-white cylindrical bottle. Both objects must be placed into the same target container."
+    },
+    {
+      "task_id": 2,
+      "data_dir": "2_butter_popcorn_basket_dataset",
+      "suite": "Sequence",
+      "task_name": "Put Butter Popcorn into Target Container in Order",
+      "memory_type": "S",
+      "challenge": "sequence",
+      "brief_description": "Pick and place butter into the target container, then pick and place popcorn into the same target container.",
+      "task_block": "This is a sequential long-horizon task: first place butter into the target container (the primitive labels call it basket), then place popcorn into the same target container. Use the visual history to decide whether the execution is still on the first object or has moved to the second object.",
+      "primitive_order": [
+        {
+          "stem": "pick_butter",
+          "label": "pick butter"
+        },
+        {
+          "stem": "place_butter_into_basket",
+          "label": "place butter into basket"
+        },
+        {
+          "stem": "pick_popcorn",
+          "label": "pick popcorn"
+        },
+        {
+          "stem": "place_popcorn_into_basket",
+          "label": "place popcorn into basket"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop with a brown open target container near the rear side. The butter is a small pale-yellow block, and the popcorn is a small cup-like or box-like object. Both objects start in the tabletop area in front of the robot, and the target is the same rear open container."
+    },
+    {
+      "task_id": 3,
+      "data_dir": "3_cream_pudding_basket_dataset",
+      "suite": "Sequence",
+      "task_name": "Put Cream Pudding into Target Container in Order",
+      "memory_type": "S",
+      "challenge": "sequence",
+      "brief_description": "Pick and place cream into the target container, then pick and place pudding into the same target container.",
+      "task_block": "This is a sequential long-horizon task: first place cream into the target container (the primitive labels call it basket), then place pudding into the same target container. Remember whether the first object has already entered the target container, without skipping or repeating.",
+      "notes": "The appendix row mentions cream/chocolate, while the local fullvlm_v2 data uses cream/pudding.",
+      "primitive_order": [
+        {
+          "stem": "pick_cream",
+          "label": "pick cream"
+        },
+        {
+          "stem": "place_cream_into_basket",
+          "label": "place cream into basket"
+        },
+        {
+          "stem": "pick_pudding",
+          "label": "pick pudding"
+        },
+        {
+          "stem": "place_pudding_into_basket",
+          "label": "place pudding into basket"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop with a brown open target container near the rear side. The cream is a small cylindrical or bottle-like object, and the pudding is a small cup-like container. They are placed sequentially from the middle tabletop area into the same target container."
+    },
+    {
+      "task_id": 4,
+      "data_dir": "4_drawer_butter_dataset",
+      "suite": "Occlusion",
+      "task_name": "Put Butter in Not-Empty Drawer",
+      "memory_type": "O",
+      "challenge": "occlusion",
+      "brief_description": "Open all drawers in order, remember which drawer already contains an object, then put butter into that non-empty drawer.",
+      "task_block": "This is an occlusion-memory task: open each drawer in order, observe and remember which drawer already contains an object, then put butter into that non-empty drawer. After drawers are closed, rely on historical keyframes to identify the target drawer.",
+      "primitive_order": [
+        {
+          "stem": "open_top_drawer",
+          "label": "open top drawer"
+        },
+        {
+          "stem": "close_the_top_drawer",
+          "label": "close the top drawer"
+        },
+        {
+          "stem": "open_middle_drawer",
+          "label": "open middle drawer"
+        },
+        {
+          "stem": "close_middle_drawer",
+          "label": "close middle drawer"
+        },
+        {
+          "stem": "open_bottom_drawer",
+          "label": "open bottom drawer"
+        },
+        {
+          "stem": "close_bottom_drawer",
+          "label": "close bottom drawer"
+        },
+        {
+          "stem": "open_top_drawer_again",
+          "label": "open top drawer again"
+        },
+        {
+          "stem": "place_butter_into_top_drawer",
+          "label": "place butter into top drawer"
+        },
+        {
+          "stem": "close_top_drawer_final",
+          "label": "close top drawer final"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black three-level drawer cabinet is on the right, and a white grid-like bowl drainer is on the left. The butter is a small pale-yellow block on the table. The task requires checking the top, middle, and bottom drawers in order, remembering which drawer already contains an object, then returning to that non-empty drawer to place the butter."
+    },
+    {
+      "task_id": 5,
+      "data_dir": "5_butter_middle_drawer_dataset",
+      "suite": "Occlusion",
+      "task_name": "Put Butter in Empty Drawer",
+      "memory_type": "O",
+      "challenge": "occlusion",
+      "brief_description": "Open all drawers in order, remember the empty drawer, then put butter into that empty drawer.",
+      "task_block": "This is an occlusion-memory task: open each drawer in order, observe and remember the empty drawer, then put butter into that empty drawer. Even after the drawer is closed, use historical keyframes to locate the target drawer.",
+      "primitive_order": [
+        {
+          "stem": "open_top_drawer",
+          "label": "open top drawer"
+        },
+        {
+          "stem": "close_top_drawer",
+          "label": "close top drawer"
+        },
+        {
+          "stem": "open_middle_drawer",
+          "label": "open middle drawer"
+        },
+        {
+          "stem": "close_middle_drawer",
+          "label": "close middle drawer"
+        },
+        {
+          "stem": "open_bottom_drawer",
+          "label": "open bottom drawer"
+        },
+        {
+          "stem": "close_bottom_drawer",
+          "label": "close bottom drawer"
+        },
+        {
+          "stem": "open_middle_drawer_again",
+          "label": "open middle drawer again"
+        },
+        {
+          "stem": "place_butter_into_middle_drawer",
+          "label": "place butter into middle drawer"
+        },
+        {
+          "stem": "close_middle_drawer_final",
+          "label": "close middle drawer final"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black three-level drawer cabinet is on the right, and a white grid-like bowl drainer is on the left. The butter is a small pale-yellow block on the table. The task requires opening the top, middle, and bottom drawers in order, remembering the empty drawer, and finally putting the butter into that target empty drawer."
+    },
+    {
+      "task_id": 6,
+      "data_dir": "6_pour_tomato_sauce_into_bowl_drainer_dataset",
+      "suite": "Counting",
+      "task_name": "Pour Sauce on Cookies Twice Place Sauce into Drainer",
+      "memory_type": "C + O",
+      "challenge": "counting, occlusion",
+      "brief_description": "Pour tomato sauce over cookies twice and place the sauce bottle into the bowl drainer.",
+      "task_block": "This is a counting plus occlusion task: pick up tomato sauce, pour it over cookies twice in a row, then place the tomato sauce into the bowl drainer. Remember which pour count has already been completed, and only move to the final placement stage after two pours.",
+      "primitive_order": [
+        {
+          "stem": "pick_tomato_sauce",
+          "label": "pick tomato sauce"
+        },
+        {
+          "stem": "pour_tomato_sauce_over_cookies_1st",
+          "label": "pour tomato sauce over cookies 1st"
+        },
+        {
+          "stem": "pour_tomato_sauce_over_cookies_2nd",
+          "label": "pour tomato sauce over cookies 2nd"
+        },
+        {
+          "stem": "place_tomato_sauce_bowl_drainer",
+          "label": "place tomato sauce bowl drainer"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. The cookies are small blocks near the left-middle table area, the tomato sauce is a red-and-white cylindrical bottle, and a white or gray bowl drainer is near the rear-right. The robot must complete two sauce pours at the cookies location, then place the sauce bottle into the bowl drainer."
+    },
+    {
+      "task_id": 7,
+      "data_dir": "7_pour_tomato_sauce_into_frypan_dataset",
+      "suite": "Counting",
+      "task_name": "Pour Sauce on Frypan Twice Place Sauce into Drainer",
+      "memory_type": "C + O",
+      "challenge": "counting, occlusion",
+      "brief_description": "Pour tomato sauce over the frypan twice and place the sauce bottle into the bowl drainer.",
+      "task_block": "This is a counting plus occlusion task: pick up tomato sauce, pour it over the frypan twice in a row, then place the tomato sauce into the bowl drainer. Use the history to tell whether the first and second pours have already been completed.",
+      "primitive_order": [
+        {
+          "stem": "pick_tomato_sauce",
+          "label": "pick tomato sauce"
+        },
+        {
+          "stem": "pour_tomato_sauce_into_frypan_1st",
+          "label": "pour tomato sauce into frypan 1st"
+        },
+        {
+          "stem": "pour_tomato_sauce_into_frypan_2nd",
+          "label": "pour tomato sauce into frypan 2nd"
+        },
+        {
+          "stem": "place_tomato_sauce_bowl_drainer",
+          "label": "place tomato sauce bowl drainer"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black frypan is near the right-middle table area, the tomato sauce is a red-and-white cylindrical bottle, and a white or gray bowl drainer is near the rear-right. The robot must pour sauce into the frypan twice in sequence, then place the sauce bottle into the drainer."
+    },
+    {
+      "task_id": 8,
+      "data_dir": "8_pick_chocolate_in_frypan_pour_tomato_sauce_twice_dataset",
+      "suite": "Counting",
+      "task_name": "Pour Sauce Twice over Chocolate in Frypan Place Sauce into Drainer",
+      "memory_type": "C",
+      "challenge": "counting",
+      "brief_description": "Pick and place chocolate into the frypan, pour tomato sauce over it twice, then place the sauce bottle into the bowl drainer.",
+      "task_block": "This is a counting task: first put chocolate into the frypan, then pick up tomato sauce and pour it over the chocolate twice, and finally place the tomato sauce into the bowl drainer. Remember whether the chocolate is already in the pan and how many sauce pours have been completed.",
+      "primitive_order": [
+        {
+          "stem": "pick_chocolate",
+          "label": "pick chocolate"
+        },
+        {
+          "stem": "place_chocolate_in_frypan",
+          "label": "place chocolate in frypan"
+        },
+        {
+          "stem": "pick_tomato_sauce",
+          "label": "pick tomato sauce"
+        },
+        {
+          "stem": "pour_tomato_sauce_over_chocolate_1st",
+          "label": "pour tomato sauce over chocolate 1st"
+        },
+        {
+          "stem": "pour_tomato_sauce_over_chocolate_2nd",
+          "label": "pour tomato sauce over chocolate 2nd"
+        },
+        {
+          "stem": "place_tomato_sauce_bowl_drainer",
+          "label": "place tomato sauce bowl drainer"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black frypan is near the right-middle area, the chocolate is a small dark block on the table, the tomato sauce is a red-and-white cylindrical bottle, and a bowl drainer is near the rear-right. First place the chocolate into the frypan, then pour sauce over the frypan/chocolate twice, and finally put the sauce bottle into the drainer."
+    },
+    {
+      "task_id": 9,
+      "data_dir": "9_pick_butter_in_frypan_pour_tomato_sauce_twice_and_place_tomato_sauce_in_bowl_drainer_dataset",
+      "suite": "Counting",
+      "task_name": "Pour Sauce Twice over Butter in Frypan Place Sauce into Drainer",
+      "memory_type": "C",
+      "challenge": "counting",
+      "brief_description": "Put butter into the frypan, pour tomato sauce over it twice, then place the sauce bottle into the bowl drainer.",
+      "task_block": "This is a counting task: first put butter into the frypan, then pick up tomato sauce and pour it over the butter twice, and finally place the tomato sauce into the bowl drainer. Track whether the butter is already in the pan and the count of the two sauce pours.",
+      "primitive_order": [
+        {
+          "stem": "pick_butter",
+          "label": "pick butter"
+        },
+        {
+          "stem": "place_butter_in_frypan",
+          "label": "place butter in frypan"
+        },
+        {
+          "stem": "pick_tomato_sauce",
+          "label": "pick tomato sauce"
+        },
+        {
+          "stem": "pour_tomato_sauce_over_butter_1st",
+          "label": "pour tomato sauce over butter 1st"
+        },
+        {
+          "stem": "pour_tomato_sauce_over_butter_2nd",
+          "label": "pour tomato sauce over butter 2nd"
+        },
+        {
+          "stem": "place_tomato_sauce_bowl_drainer",
+          "label": "place tomato sauce bowl drainer"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black frypan is near the right-middle area, the butter is a small pale-yellow block, the tomato sauce is a red-and-white cylindrical bottle, and a bowl drainer is near the rear-right. First place the butter into the frypan, then pour sauce over the frypan/butter twice, and finally place the sauce bottle."
+    },
+    {
+      "task_id": 10,
+      "data_dir": "10_pour_wine_bottle_into_mug_dataset",
+      "suite": "Counting",
+      "task_name": "Pour Wine into Mug Twice",
+      "memory_type": "C",
+      "challenge": "counting",
+      "brief_description": "Pour wine into the mug twice.",
+      "task_block": "This is a counting task: pick up the wine bottle, pour wine into the mug twice, and finally place the wine bottle back on the table. Decide whether the current stage is the first pour, the second pour, or the final placement.",
+      "primitive_order": [
+        {
+          "stem": "pick_wine_bottle",
+          "label": "pick wine bottle"
+        },
+        {
+          "stem": "pour_wine_into_mug_1st",
+          "label": "pour wine into mug 1st"
+        },
+        {
+          "stem": "pour_wine_into_mug_2nd",
+          "label": "pour wine into mug 2nd"
+        },
+        {
+          "stem": "place_wine_bottle_on_table",
+          "label": "place wine bottle on table"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. The wine bottle is a tall dark-red or dark-colored bottle, the mug is a cup on the right with a black handle, and there is also a light-colored plate or tray on the left. The robot must pour wine into the same mug twice in sequence, then place the wine bottle back on the table."
+    },
+    {
+      "task_id": 11,
+      "data_dir": "11_cookies_top_butter_middle_dataset",
+      "suite": "Occlusion",
+      "task_name": "Put Cookies Chocolate into Drawers Respectively",
+      "memory_type": "O + C",
+      "challenge": "occlusion, multi-placement",
+      "brief_description": "Put cookies into the top drawer and put chocolate into another drawer according to the local HDF5 primitive labels.",
+      "task_block": "This is an occlusion plus multi-placement task: open the top drawer and put cookies into the top drawer; then open the middle drawer and put chocolate into the middle drawer. Remember which object has already been placed in each drawer, and avoid putting the second object in the wrong location.",
+      "notes": "The directory name says butter, but the HDF5 primitive stems use chocolate.",
+      "primitive_order": [
+        {
+          "stem": "open_top_drawer",
+          "label": "open top drawer"
+        },
+        {
+          "stem": "pick_cookies",
+          "label": "pick cookies"
+        },
+        {
+          "stem": "place_cookies",
+          "label": "place cookies"
+        },
+        {
+          "stem": "close_top_drawer",
+          "label": "close top drawer"
+        },
+        {
+          "stem": "open_middle_drawer",
+          "label": "open middle drawer"
+        },
+        {
+          "stem": "pick_chocolate",
+          "label": "pick chocolate"
+        },
+        {
+          "stem": "place_chocolate",
+          "label": "place chocolate"
+        },
+        {
+          "stem": "close_middle_drawer",
+          "label": "close middle drawer"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black three-level drawer cabinet is on the right, and a white grid-like drainer is on the left. The cookies and chocolate are small block-like objects on the table. The robot must open the top drawer to place cookies, then open the middle drawer to place chocolate, without confusing the two drawer locations."
+    },
+    {
+      "task_id": 12,
+      "data_dir": "12_cookies_chocolate_middle_drawer_dataset",
+      "suite": "Occlusion",
+      "task_name": "Put Cookies Chocolate into Middle Drawer",
+      "memory_type": "O",
+      "challenge": "occlusion",
+      "brief_description": "Put cookies into the middle drawer and then put chocolate into the same drawer.",
+      "task_block": "This is an occlusion task: open the middle drawer, place cookies into the middle drawer first, then place chocolate into the same middle drawer, and finally close the drawer. Remember that cookies are already inside the same drawer.",
+      "primitive_order": [
+        {
+          "stem": "open_middle_drawer",
+          "label": "open middle drawer"
+        },
+        {
+          "stem": "pick_cookies",
+          "label": "pick cookies"
+        },
+        {
+          "stem": "place_cookies",
+          "label": "place cookies"
+        },
+        {
+          "stem": "pick_chocolate",
+          "label": "pick chocolate"
+        },
+        {
+          "stem": "place_chocolate",
+          "label": "place chocolate"
+        },
+        {
+          "stem": "close_middle_drawer",
+          "label": "close middle drawer"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black three-level drawer cabinet is on the right, and a white grid-like drainer is on the left. The cookies and chocolate are both on the table in front of the drawer. The robot must open the middle drawer and place cookies and chocolate into the same middle drawer in order."
+    },
+    {
+      "task_id": 13,
+      "data_dir": "13_butter_cookies_middle_drawer_dataset",
+      "suite": "Occlusion",
+      "task_name": "Put Cookies Butter into Middle Drawer",
+      "memory_type": "O",
+      "challenge": "occlusion",
+      "brief_description": "Put cookies into the middle drawer and then put butter into the same drawer according to the local HDF5 primitive order.",
+      "task_block": "This is an occlusion task: open the middle drawer, place cookies into the middle drawer first according to the data order, then place butter into the same middle drawer, and finally close the drawer. Remember that the first object has already been placed before handling the second one.",
+      "notes": "The appendix wording lists butter/cookies, while the local primitive order is cookies then butter.",
+      "primitive_order": [
+        {
+          "stem": "open_middle_drawer",
+          "label": "open middle drawer"
+        },
+        {
+          "stem": "pick_cookies",
+          "label": "pick cookies"
+        },
+        {
+          "stem": "place_cookies",
+          "label": "place cookies"
+        },
+        {
+          "stem": "pick_butter",
+          "label": "pick butter"
+        },
+        {
+          "stem": "place_butter",
+          "label": "place butter"
+        },
+        {
+          "stem": "close_middle_drawer",
+          "label": "close middle drawer"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black three-level drawer cabinet is on the right, and a white grid-like drainer is on the left. The cookies and butter are both on the table in front of the drawer. The robot must open the middle drawer and place cookies and butter into the same middle drawer in order."
+    },
+    {
+      "task_id": 14,
+      "data_dir": "14_cookies_chocolate_drawers_dataset",
+      "suite": "Occlusion",
+      "task_name": "Put Cookies Chocolate into Drawer Respectively",
+      "memory_type": "O",
+      "challenge": "occlusion, multi-placement",
+      "brief_description": "Put cookies into the top drawer and put chocolate into another drawer.",
+      "task_block": "This is an occlusion plus multi-placement task: put cookies into the top drawer and put chocolate into the middle drawer. Remember the target assignment for the different drawers, and avoid putting the second object into the wrong drawer.",
+      "primitive_order": [
+        {
+          "stem": "open_top_drawer",
+          "label": "open top drawer"
+        },
+        {
+          "stem": "pick_cookies",
+          "label": "pick cookies"
+        },
+        {
+          "stem": "place_cookies_in_top_drawer",
+          "label": "place cookies in top drawer"
+        },
+        {
+          "stem": "close_top_drawer",
+          "label": "close top drawer"
+        },
+        {
+          "stem": "open_middle_drawer",
+          "label": "open middle drawer"
+        },
+        {
+          "stem": "pick_chocolate",
+          "label": "pick chocolate"
+        },
+        {
+          "stem": "place_chocolate_in_middle_drawer",
+          "label": "place chocolate in middle drawer"
+        },
+        {
+          "stem": "close_middle_drawer",
+          "label": "close middle drawer"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black three-level drawer cabinet is on the right, and a white grid-like drainer is on the left. The cookies and chocolate are small blocks on the table. The robot must place cookies into the top drawer and chocolate into the middle drawer, remembering the two different target drawers."
+    },
+    {
+      "task_id": 15,
+      "data_dir": "15_butter_milk_frypan_dataset",
+      "suite": "Counting",
+      "task_name": "Pour Milk Twice over Butter in Frypan",
+      "memory_type": "C",
+      "challenge": "counting",
+      "brief_description": "Pick and place butter into the frypan, then pour milk over it twice.",
+      "task_block": "This is a counting task: first place butter into the frypan, then pick up milk and pour it over the frypan/butter twice, and finally place the milk at the target location. Track whether the butter is already in the pan and how many milk pours have been completed.",
+      "primitive_order": [
+        {
+          "stem": "pick_butter",
+          "label": "pick butter"
+        },
+        {
+          "stem": "place_butter_in_frypan",
+          "label": "place butter in frypan"
+        },
+        {
+          "stem": "pick_milk",
+          "label": "pick milk"
+        },
+        {
+          "stem": "pour_milk_in_frypan_1st",
+          "label": "pour milk in frypan 1st"
+        },
+        {
+          "stem": "pour_milk_in_frypan_2nd",
+          "label": "pour milk in frypan 2nd"
+        },
+        {
+          "stem": "place_milk_on_table",
+          "label": "place milk on table"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black frypan is near the right-middle area, the butter is a small pale-yellow block, and the milk is a white or light-colored bottle or carton. First place the butter into the frypan, then pour milk over the frypan/butter twice, and finally place the milk back on the table."
+    },
+    {
+      "task_id": 16,
+      "data_dir": "16_pour_milk_in_red_coffee_mug_twice_and_place_milk_in_bowl_drainer_dataset",
+      "suite": "Counting",
+      "task_name": "Pour Milk Twice over Mug Place Milk into Drainer",
+      "memory_type": "C + O",
+      "challenge": "counting, occlusion",
+      "brief_description": "Pick milk from the table, pour it into the mug twice, then place the milk container into the bowl drainer.",
+      "task_block": "This is a counting plus occlusion task: pick up milk, pour it into the red coffee mug twice, then place the milk into the bowl drainer. Remember the number of pours into the mug, and only move to the placement stage after two pours.",
+      "primitive_order": [
+        {
+          "stem": "pick_milk",
+          "label": "pick milk"
+        },
+        {
+          "stem": "pour_milk_into_red_coffee_mug_1st",
+          "label": "pour milk into red coffee mug 1st"
+        },
+        {
+          "stem": "pour_milk_into_red_coffee_mug_2nd",
+          "label": "pour milk into red coffee mug 2nd"
+        },
+        {
+          "stem": "place_milk_bowl_drainer",
+          "label": "place milk bowl drainer"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. The red coffee mug is near the front-middle table area, the milk is a white or light-colored container, and a white or gray bowl drainer is near the rear-right. The robot must pour milk into the red coffee mug twice in sequence, then place the milk into the drainer."
+    },
+    {
+      "task_id": 17,
+      "data_dir": "17_butter_chocolate_middle_drawer_dataset",
+      "suite": "Occlusion",
+      "task_name": "Put Butter Chocolate into Middle Drawer",
+      "memory_type": "O",
+      "challenge": "occlusion",
+      "brief_description": "Put butter into the middle drawer and then put chocolate into the same drawer.",
+      "task_block": "This is an occlusion task: open the middle drawer, place butter into the middle drawer first, then place chocolate into the same middle drawer, and finally close the drawer. Remember that butter is already inside the drawer.",
+      "primitive_order": [
+        {
+          "stem": "open_middle_drawer",
+          "label": "open middle drawer"
+        },
+        {
+          "stem": "pick_butter",
+          "label": "pick butter"
+        },
+        {
+          "stem": "place_butter",
+          "label": "place butter"
+        },
+        {
+          "stem": "pick_chocolate",
+          "label": "pick chocolate"
+        },
+        {
+          "stem": "place_chocolate",
+          "label": "place chocolate"
+        },
+        {
+          "stem": "close_middle_drawer",
+          "label": "close middle drawer"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black three-level drawer cabinet is on the right, and a white grid-like drainer is on the left. The butter is a small pale-yellow block, and the chocolate is a small dark block. The robot must open the middle drawer and place butter and chocolate into the same middle drawer in order."
+    },
+    {
+      "task_id": 18,
+      "data_dir": "18_chocolate_butter_cabinet_dataset",
+      "suite": "Transferring",
+      "task_name": "Transfer Chocolate Butter",
+      "memory_type": "T",
+      "challenge": "transferring",
+      "brief_description": "Pick and place chocolate and butter from cabinet1 to cabinet2, respectively.",
+      "task_block": "This is a transfer-memory task: transfer chocolate and butter from cabinet1 to cabinet2 respectively. Remember which objects have already been transferred, and avoid repeated picking or omissions.",
+      "primitive_order": [
+        {
+          "stem": "pick_chocolate",
+          "label": "pick chocolate"
+        },
+        {
+          "stem": "place_chocolate_cabinet2",
+          "label": "place chocolate cabinet2"
+        },
+        {
+          "stem": "pick_butter",
+          "label": "pick butter"
+        },
+        {
+          "stem": "place_butter_cabinet2",
+          "label": "place butter cabinet2"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. Two black cabinet-like or box-like containers are near the middle-rear area: the left side is source cabinet1, and the right side is target cabinet2. Chocolate and butter are transferred separately from the source side into target cabinet2."
+    },
+    {
+      "task_id": 19,
+      "data_dir": "19_tomato_milk_orange_cabinet_dataset",
+      "suite": "Transferring",
+      "task_name": "Transfer Sauce Milk Juice",
+      "memory_type": "T",
+      "challenge": "transferring",
+      "brief_description": "Pick and place tomato sauce, milk, and orange juice from cabinet1 to cabinet2.",
+      "task_block": "This is a transfer-memory task: transfer tomato sauce, milk, and orange juice from cabinet1 to cabinet2 in sequence. Remember the completion state of all three objects and which object should be handled now.",
+      "primitive_order": [
+        {
+          "stem": "pick_tomato_sauce",
+          "label": "pick tomato sauce"
+        },
+        {
+          "stem": "place_tomato_sauce_cabinet2",
+          "label": "place tomato sauce cabinet2"
+        },
+        {
+          "stem": "pick_milk",
+          "label": "pick milk"
+        },
+        {
+          "stem": "place_milk_cabinet2",
+          "label": "place milk cabinet2"
+        },
+        {
+          "stem": "pick_orange_juice",
+          "label": "pick orange juice"
+        },
+        {
+          "stem": "place_orange_juice_cabinet2",
+          "label": "place orange juice cabinet2"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. Two black cabinet-like or box-like containers are near the middle-rear area: the left side is source cabinet1, and the right side is target cabinet2. Tomato sauce, milk, and orange juice are bottle-like or carton-like objects that must be transferred in sequence from the source side into target cabinet2."
+    },
+    {
+      "task_id": 20,
+      "data_dir": "20_cookies_chocolate_microwave_dataset",
+      "suite": "Occlusion",
+      "task_name": "Put Cookies Chocolate into Microwave",
+      "memory_type": "O",
+      "challenge": "occlusion",
+      "brief_description": "Put cookies into the microwave and then put chocolate into the location where the cookies were placed.",
+      "task_block": "This is an occluded-location memory task: open the microwave, place cookies into the microwave first, then place chocolate at the location where the cookies were placed, and finally close the microwave. Remember the placement location of the cookies.",
+      "primitive_order": [
+        {
+          "stem": "open_microwave",
+          "label": "open microwave"
+        },
+        {
+          "stem": "pick_cookies",
+          "label": "pick cookies"
+        },
+        {
+          "stem": "place_cookies",
+          "label": "place cookies"
+        },
+        {
+          "stem": "pick_chocolate",
+          "label": "pick chocolate"
+        },
+        {
+          "stem": "place_chocolate",
+          "label": "place chocolate"
+        },
+        {
+          "stem": "close_microwave",
+          "label": "close microwave"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black microwave is on the right, and when the door is open its interior is the target location. The cookies and chocolate are small block-like objects near the middle of the table. First open the microwave and place cookies inside it, then place chocolate at the location where the cookies were placed, and finally close the microwave."
+    },
+    {
+      "task_id": 21,
+      "data_dir": "21_butter_chocolate_microwave_dataset",
+      "suite": "Occlusion",
+      "task_name": "Put Butter Chocolate into Microwave",
+      "memory_type": "O",
+      "challenge": "occlusion",
+      "brief_description": "Put butter into the microwave and then put chocolate into the location where the butter was placed.",
+      "task_block": "This is an occluded-location memory task: open the microwave, place butter into the microwave first, then place chocolate at the location where the butter was placed, and finally close the microwave. Use the visual history to locate the butter placement.",
+      "primitive_order": [
+        {
+          "stem": "open_microwave",
+          "label": "open microwave"
+        },
+        {
+          "stem": "pick_butter",
+          "label": "pick butter"
+        },
+        {
+          "stem": "place_butter",
+          "label": "place butter"
+        },
+        {
+          "stem": "pick_chocolate",
+          "label": "pick chocolate"
+        },
+        {
+          "stem": "place_chocolate",
+          "label": "place chocolate"
+        },
+        {
+          "stem": "close_microwave",
+          "label": "close microwave"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black microwave is on the right, and when the door is open its interior is the target location. The butter is a small pale-yellow block, and the chocolate is a small dark block. First place butter into the microwave, then place chocolate at the location where the butter was placed, and finally close the microwave."
+    },
+    {
+      "task_id": 22,
+      "data_dir": "22_pour_tomato_cookies_microwave_dataset",
+      "suite": "Sequence",
+      "task_name": "Pour Sauce Twice Put Cookies into Microwave",
+      "memory_type": "S",
+      "challenge": "sequence, counting",
+      "brief_description": "Pour tomato sauce over cookies twice, then put the cookies into the microwave.",
+      "task_block": "This is a sequence plus counting task: first pour tomato sauce over cookies twice, then open the microwave and place the cookies into the microwave. Complete the two sauce pours before switching to the microwave placement stage.",
+      "primitive_order": [
+        {
+          "stem": "pick_tomato",
+          "label": "pick tomato"
+        },
+        {
+          "stem": "pour_first",
+          "label": "pour first"
+        },
+        {
+          "stem": "pour_second",
+          "label": "pour second"
+        },
+        {
+          "stem": "place_tomato_aside",
+          "label": "place tomato aside"
+        },
+        {
+          "stem": "open_microwave",
+          "label": "open microwave"
+        },
+        {
+          "stem": "pick_cookies",
+          "label": "pick cookies"
+        },
+        {
+          "stem": "place_cookies",
+          "label": "place cookies"
+        },
+        {
+          "stem": "close_microwave",
+          "label": "close microwave"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black microwave is on the right; the cookies are small blocks, and the tomato sauce is a red-and-white cylindrical bottle. The robot must pour sauce over the cookies twice in sequence, place the sauce bottle aside, then open the microwave and place the cookies inside it."
+    },
+    {
+      "task_id": 23,
+      "data_dir": "23_cream_popcorn_microwave_dataset",
+      "suite": "Occlusion",
+      "task_name": "Put Cream Popcorn into Microwave",
+      "memory_type": "O",
+      "challenge": "occlusion",
+      "brief_description": "Put cream into the microwave and then put popcorn into the location where the cream was placed.",
+      "task_block": "This is an occluded-location memory task: open the microwave, place cream into the microwave first, then place popcorn at the location where the cream was placed, and finally close the microwave. Remember the historical placement location of the cream.",
+      "primitive_order": [
+        {
+          "stem": "open_microwave",
+          "label": "open microwave"
+        },
+        {
+          "stem": "pick_cream",
+          "label": "pick cream"
+        },
+        {
+          "stem": "place_cream",
+          "label": "place cream"
+        },
+        {
+          "stem": "pick_popcorn",
+          "label": "pick popcorn"
+        },
+        {
+          "stem": "place_popcorn",
+          "label": "place popcorn"
+        },
+        {
+          "stem": "close_microwave",
+          "label": "close microwave"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black microwave is on the right, and when the door is open its interior is the target location. The cream is a small bottle-like or cylindrical object, and the popcorn is a small cup-like or box-like object. First place cream into the microwave, then place popcorn at the location where the cream was placed, and finally close the microwave."
+    },
+    {
+      "task_id": 24,
+      "data_dir": "24_cookies_popcorn_microwave_dataset",
+      "suite": "Occlusion",
+      "task_name": "Put Cookies Popcorn into Microwave",
+      "memory_type": "O",
+      "challenge": "occlusion",
+      "brief_description": "Put cookies into the microwave and then put popcorn into the location where the cookies were placed.",
+      "task_block": "This is an occluded-location memory task: open the microwave, place cookies into the microwave first, then place popcorn at the location where the cookies were placed, and finally close the microwave. Remember the placement location of the cookies.",
+      "primitive_order": [
+        {
+          "stem": "open_microwave",
+          "label": "open microwave"
+        },
+        {
+          "stem": "pick_cookies",
+          "label": "pick cookies"
+        },
+        {
+          "stem": "place_cookies",
+          "label": "place cookies"
+        },
+        {
+          "stem": "pick_popcorn",
+          "label": "pick popcorn"
+        },
+        {
+          "stem": "place_popcorn",
+          "label": "place popcorn"
+        },
+        {
+          "stem": "close_microwave",
+          "label": "close microwave"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop. A black microwave is on the right, and when the door is open its interior is the target location. The cookies are small blocks, and the popcorn is a small cup-like or box-like object. First place cookies into the microwave, then place popcorn at the location where the cookies were placed, and finally close the microwave."
+    },
+    {
+      "task_id": 25,
+      "data_dir": "25_butter_cream_dataset",
+      "suite": "Transferring",
+      "task_name": "Transfer Butter Cream Cheese",
+      "memory_type": "T",
+      "challenge": "transferring",
+      "brief_description": "Pick and place butter and cream cheese from plate1 to plate2, respectively.",
+      "task_block": "This is a transfer-memory task: transfer butter and cream cheese from plate1 to plate2 respectively. Remember whether the first object has already been completed, then handle the second object.",
+      "notes": "The appendix row mentions butter/cheese, while the local data uses cream_cheese.",
+      "primitive_order": [
+        {
+          "stem": "pick_butter",
+          "label": "pick butter"
+        },
+        {
+          "stem": "place_butter_plate2",
+          "label": "place butter plate2"
+        },
+        {
+          "stem": "pick_cream_cheese",
+          "label": "pick cream cheese"
+        },
+        {
+          "stem": "place_cream_cheese_plate2",
+          "label": "place cream cheese plate2"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop with two white round plates. The left or middle plate is source plate1, and the right plate is target plate2. The butter is a small pale-yellow block, and the cream cheese is a light-colored round or block-like object. Both objects must be transferred separately from plate1 to plate2."
+    },
+    {
+      "task_id": 26,
+      "data_dir": "26_chocolate_pudding_cream_cheese_dataset",
+      "suite": "Transferring",
+      "task_name": "Transfer Chocolate Pudding Cream Cheese",
+      "memory_type": "T",
+      "challenge": "transferring",
+      "brief_description": "Pick and place chocolate pudding and cream cheese from plate1 to plate2, respectively.",
+      "task_block": "This is a transfer-memory task: transfer chocolate pudding and cream cheese from plate1 to plate2 respectively. Track the completion state of both object transfers, and avoid omissions or repeated placements.",
+      "notes": "The local data uses chocolate_pudding and cream_cheese.",
+      "primitive_order": [
+        {
+          "stem": "pick_chocolate_pudding",
+          "label": "pick chocolate pudding"
+        },
+        {
+          "stem": "place_chocolate_pudding_plate2",
+          "label": "place chocolate pudding plate2"
+        },
+        {
+          "stem": "pick_cream_cheese",
+          "label": "pick cream cheese"
+        },
+        {
+          "stem": "place_cream_cheese_plate2",
+          "label": "place cream cheese plate2"
+        }
+      ],
+      "scene_description": "The scene is a light wooden tabletop with two white round plates. The left or middle plate is source plate1, and the right plate is target plate2. The chocolate pudding is a dark cup-like or block-like object, and the cream cheese is a light-colored round or block-like object. Both objects must be transferred separately from plate1 to plate2."
+    }
+  ]
+}

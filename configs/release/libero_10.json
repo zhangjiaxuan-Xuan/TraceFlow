@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "benchmark": "LIBERO",
+  "protocol": "best-of-suite-envelope-v1-raw-best",
+  "tasks": ["libero_10"],
+  "evaluation": {"seed": 7, "episodes_per_task": 50, "batch_size": 16, "env_workers": 32},
+  "memory": {"asset_groups": ["common.libero_head", "libero.b50_positive", "libero.ncpi_negative"], "positive_top_k": 16, "negative_top_k": 8, "time_version": "v1"},
+  "reported": {"successes": 481, "episodes": 500, "success_rate": 0.962, "selection": "raw-best among nine capacity/top-k candidates"}
+}
+

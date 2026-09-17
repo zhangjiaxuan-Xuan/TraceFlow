@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "benchmark": "RoboMemArena",
+  "protocol": "tracebankstack-inherited-v1",
+  "tasks": [18, 19, 25, 26],
+  "evaluation": {"seed": 7, "episodes_per_task": 50, "batch_size": 32, "env_workers": 64, "upper_gpu": 0, "lower_gpu": 1},
+  "memory": {"asset_groups": ["cl.transferring"], "positive_top_k": 16, "negative_top_k": 8, "branches": ["success", "failure", "joint"], "immutable_base": true}
+}
+

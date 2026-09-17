@@ -1,0 +1,13 @@
+{
+  "schema": "arena_suite_guidance_gate_v1",
+  "description": "Suite-isolated Counting V1.1: conservative fixed cap and late cutoff.",
+  "task_profiles": {
+    "6": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.01, "t_cut": 0.58},
+    "7": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.01, "t_cut": 0.58},
+    "8": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.01, "t_cut": 0.58},
+    "9": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.01, "t_cut": 0.58},
+    "10": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.01, "t_cut": 0.58},
+    "15": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.01, "t_cut": 0.58},
+    "16": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.01, "t_cut": 0.58}
+  }
+}

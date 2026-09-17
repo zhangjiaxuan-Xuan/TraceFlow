@@ -1,0 +1,17 @@
+{
+  "schema": "arena_suite_guidance_gate_v1",
+  "description": "Suite-isolated Occlusion V1.1: conservative fixed cap and late cutoff.",
+  "task_profiles": {
+    "4": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.04, "t_cut": 0.55},
+    "5": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.04, "t_cut": 0.55},
+    "11": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.04, "t_cut": 0.55},
+    "12": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.04, "t_cut": 0.55},
+    "13": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.04, "t_cut": 0.55},
+    "14": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.04, "t_cut": 0.55},
+    "17": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.04, "t_cut": 0.55},
+    "20": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.04, "t_cut": 0.55},
+    "21": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.04, "t_cut": 0.55},
+    "23": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.04, "t_cut": 0.55},
+    "24": {"v0_lambda_max": 0.2, "v1_norm_cap": 0.04, "t_cut": 0.55}
+  }
+}

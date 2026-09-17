@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "benchmark": "RoboMemArena",
+  "protocol": "suite-only-fusion-v1.1",
+  "tasks": [6, 7, 8, 9, 10, 15, 16],
+  "evaluation": {"seed": 50, "episodes_per_task": 51, "batch_size": 32, "env_workers": 64, "upper_gpu": 0, "lower_gpu": 1},
+  "memory": {"asset_groups": ["arena.counting"], "head": "fusion", "positive_top_k": 16, "negative_top_k": 0, "time_version": "v1.1", "exact_task_gate": true}
+}
+

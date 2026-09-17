@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/zhangjiaxuan-Xuan/TraceFlow/assets/manifest.schema.json",
+  "type": "object",
+  "required": ["schema_version", "repository", "revision", "groups"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "repository": {"const": "JoeyXuan/traceflow-models"},
+    "revision": {"type": "string", "minLength": 1},
+    "groups": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["description", "producer_checkpoint", "files"],
+        "properties": {
+          "description": {"type": "string"},
+          "producer_checkpoint": {"type": "string"},
+          "task_ids": {"type": "array", "items": {"type": "integer"}, "uniqueItems": true},
+          "files": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["path", "size", "sha256", "kind"],
+              "properties": {
+                "path": {"type": "string"},
+                "size": {"type": "integer", "minimum": 1},
+                "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                "kind": {"enum": ["head", "metadata", "faiss", "actions", "json"]},
+                "records": {"type": "integer", "minimum": 1},
+                "vectors": {"type": "integer", "minimum": 1},
+                "references": {"type": "integer", "minimum": 1},
+                "task_ids": {"type": "array", "items": {"type": "integer"}, "uniqueItems": true}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "benchmark": "RoboMemArena",
+  "protocol": "extra8-fusion-v1",
+  "tasks": [18, 19, 25, 26],
+  "evaluation": {"seed": 50, "episodes_per_task": 26, "batch_size": 32, "env_workers": 64, "upper_gpu": 0, "lower_gpu": 1},
+  "memory": {"asset_groups": ["arena.extra8"], "head": "fusion", "positive_top_k": 16, "negative_top_k": 0, "time_version": "v1"}
+}
+

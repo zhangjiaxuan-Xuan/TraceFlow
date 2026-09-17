@@ -1,0 +1,526 @@
+{
+  "groups": {
+    "arena.counting": {
+      "description": "Counting-only Fusion memory",
+      "files": [
+        {
+          "kind": "head",
+          "path": "arena/counting/heads/fusion/best.pt",
+          "sha256": "e06ec178e71ba753faefe58b7b30c970c3aca72a95cd7268041f7a19ceef0aa1",
+          "size": 100802241
+        },
+        {
+          "kind": "faiss",
+          "path": "arena/counting/memory/fusion/gpm_memory.index",
+          "sha256": "daf583ee3bce2e9331b7eacdf79a9004a22f253dde5956ac2709f8203e7e148b",
+          "size": 851370029,
+          "vectors": 103927
+        },
+        {
+          "kind": "metadata",
+          "path": "arena/counting/memory/fusion/gpm_memory_meta.pt",
+          "records": 103927,
+          "sha256": "c5421531c249220f9480d1e90397c28ee2e05c034b2241e988d02d8a1cf8eb9e",
+          "size": 908348102,
+          "task_ids": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            15,
+            16
+          ]
+        },
+        {
+          "kind": "actions",
+          "path": "arena/counting/memory/shared/gpm_memory_actions.npz",
+          "references": 700,
+          "sha256": "1b134b1403833cf6a00e091dfebba72823fc387c2e605f0cc4e4140ab55b38d9",
+          "size": 7645013
+        }
+      ],
+      "producer_checkpoint": "PrediMem-public-e645741c",
+      "task_ids": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        15,
+        16
+      ]
+    },
+    "arena.extra8": {
+      "description": "Extra8 joint memory and Upper/Fusion heads",
+      "files": [
+        {
+          "kind": "head",
+          "path": "arena/extra8/heads/fusion/best.pt",
+          "sha256": "a8ad922ce4d59890a2b9a310411a7964e5986cab8988dba620eaa5f98dbe713e",
+          "size": 100802241
+        },
+        {
+          "kind": "head",
+          "path": "arena/extra8/heads/upper/best.pt",
+          "sha256": "9dc3d7d4fa40c656a846fb8cf8565dcc3cd551e8f30766c4fd3e85124fb1272d",
+          "size": 75541041
+        },
+        {
+          "kind": "faiss",
+          "path": "arena/extra8/memory/fusion/gpm_memory.index",
+          "sha256": "19a48c3ccd1ecbf0378618f26041153ee8e8dc45ab7ce7814a2e4077b48fda2f",
+          "size": 1219305517,
+          "vectors": 148841
+        },
+        {
+          "kind": "metadata",
+          "path": "arena/extra8/memory/fusion/gpm_memory_meta.pt",
+          "records": 148841,
+          "sha256": "e9bbcdafa03e6a9f0495c12c6d636aae90bfd5f36ad55b877e1dd4e4a8dfef88",
+          "size": 1302262213
+        },
+        {
+          "kind": "actions",
+          "path": "arena/extra8/memory/shared/gpm_memory_actions.npz",
+          "references": 800,
+          "sha256": "538375826512bf2292482455d1404a205c2fa49019feda66e7261ed994537065",
+          "size": 12912143
+        },
+        {
+          "kind": "faiss",
+          "path": "arena/extra8/memory/upper/gpm_memory.index",
+          "sha256": "0d4ab7206e6ae9f8dcd7532fc822256f2780d0933c2b40a0e4ceeca9a94c2c00",
+          "size": 1219305517,
+          "vectors": 148841
+        },
+        {
+          "kind": "metadata",
+          "path": "arena/extra8/memory/upper/gpm_memory_meta.pt",
+          "records": 148841,
+          "sha256": "2d9080aa54eb1821f3f3f6ad651e8b427aded8fcfd9c82e99f7b43dca00a4048",
+          "size": 1302262213
+        }
+      ],
+      "producer_checkpoint": "PrediMem-public-e645741c"
+    },
+    "arena.occlusion": {
+      "description": "Occlusion-only Fusion memory",
+      "files": [
+        {
+          "kind": "head",
+          "path": "arena/occlusion/heads/fusion/best.pt",
+          "sha256": "e06ec178e71ba753faefe58b7b30c970c3aca72a95cd7268041f7a19ceef0aa1",
+          "size": 100802241
+        },
+        {
+          "kind": "faiss",
+          "path": "arena/occlusion/memory/fusion/gpm_memory.index",
+          "sha256": "026915b9ad92d5a57f07ee0d43264da2a4784f50940773f8cb7b37882d49afe8",
+          "size": 2542166061,
+          "vectors": 310323
+        },
+        {
+          "kind": "metadata",
+          "path": "arena/occlusion/memory/fusion/gpm_memory_meta.pt",
+          "records": 310323,
+          "sha256": "4a1e38899f340a748dd3a517dd8598a043b2478862e56e2e11b150fdf57c56ef",
+          "size": 2710478946,
+          "task_ids": [
+            4,
+            5,
+            11,
+            12,
+            13,
+            14,
+            17,
+            20,
+            21,
+            23,
+            24
+          ]
+        },
+        {
+          "kind": "actions",
+          "path": "arena/occlusion/memory/shared/gpm_memory_actions.npz",
+          "references": 1100,
+          "sha256": "67024da785065f5352990fdf76132f8003099e9ed419ebd17d0092cb3c3f2bc7",
+          "size": 28594530
+        }
+      ],
+      "producer_checkpoint": "PrediMem-public-e645741c",
+      "task_ids": [
+        4,
+        5,
+        11,
+        12,
+        13,
+        14,
+        17,
+        20,
+        21,
+        23,
+        24
+      ]
+    },
+    "cl.libero10": {
+      "description": "TraceBankStack LIBERO-10 release bank",
+      "files": [
+        {
+          "kind": "faiss",
+          "path": "libero/libero10/positive/gpm_memory.index",
+          "sha256": "c43ac4d954c7cb6c13fd5d89d8c5205c61f79b10ff2c572a9d6f9a56e9a31ed4",
+          "size": 4096045,
+          "vectors": 500
+        },
+        {
+          "kind": "actions",
+          "path": "libero/libero10/positive/gpm_memory_actions.npz",
+          "references": 500,
+          "sha256": "a722f338a9229d69514d93fb23bfd9a638721a0e4eeb992c34b13f3751ea4e14",
+          "size": 1789641
+        },
+        {
+          "kind": "metadata",
+          "path": "libero/libero10/positive/gpm_memory_meta.pt",
+          "records": 500,
+          "sha256": "fbd3a11d75b114aa79a5ede65e9aaae16ab58be88e0c05a8c4b274fe64d63672",
+          "size": 4368935,
+          "task_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "kind": "json",
+          "path": "libero/libero10/positive/slice_summary.json",
+          "sha256": "05167cad737207724f2698e84c5507eb7ab24ae90d189c8e866dfa1946e32b0f",
+          "size": 897
+        },
+        {
+          "kind": "faiss",
+          "path": "libero/libero10/negative/gpm_negative_memory.index",
+          "sha256": "def9aaa897a662256df955c9292fa7d659d40729128f53335714d77b1ae4bd27",
+          "size": 4497453,
+          "vectors": 549
+        },
+        {
+          "kind": "actions",
+          "path": "libero/libero10/negative/gpm_negative_memory_actions.npz",
+          "references": 549,
+          "sha256": "3cf174e1cf67247d5d3c7ab253018602060c16092e2cad24d79fd11dcea83342",
+          "size": 6959607
+        },
+        {
+          "kind": "metadata",
+          "path": "libero/libero10/negative/gpm_negative_memory_meta.pt",
+          "records": 549,
+          "sha256": "8c35132823049fcb6dec40d278e36bd89cbf789ee23ce62177ac575313bd52ff",
+          "size": 5288016,
+          "task_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "kind": "json",
+          "path": "libero/libero10/negative/slice_summary.json",
+          "sha256": "6f0409996a37c0f171bf9d6c9ecc060fe0de4187f2a7b2667e30de1a114e8750",
+          "size": 907
+        }
+      ],
+      "producer_checkpoint": "Pi0.5-LIBERO",
+      "task_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "cl.transferring": {
+      "description": "TraceBankStack Transferring immutable Extra8 base",
+      "files": [
+        {
+          "kind": "head",
+          "path": "arena/extra8/heads/fusion/best.pt",
+          "sha256": "a8ad922ce4d59890a2b9a310411a7964e5986cab8988dba620eaa5f98dbe713e",
+          "size": 100802241
+        },
+        {
+          "kind": "head",
+          "path": "arena/extra8/heads/upper/best.pt",
+          "sha256": "9dc3d7d4fa40c656a846fb8cf8565dcc3cd551e8f30766c4fd3e85124fb1272d",
+          "size": 75541041
+        },
+        {
+          "kind": "faiss",
+          "path": "arena/extra8/memory/fusion/gpm_memory.index",
+          "sha256": "19a48c3ccd1ecbf0378618f26041153ee8e8dc45ab7ce7814a2e4077b48fda2f",
+          "size": 1219305517,
+          "vectors": 148841
+        },
+        {
+          "kind": "metadata",
+          "path": "arena/extra8/memory/fusion/gpm_memory_meta.pt",
+          "records": 148841,
+          "sha256": "e9bbcdafa03e6a9f0495c12c6d636aae90bfd5f36ad55b877e1dd4e4a8dfef88",
+          "size": 1302262213
+        },
+        {
+          "kind": "actions",
+          "path": "arena/extra8/memory/shared/gpm_memory_actions.npz",
+          "references": 800,
+          "sha256": "538375826512bf2292482455d1404a205c2fa49019feda66e7261ed994537065",
+          "size": 12912143
+        },
+        {
+          "kind": "faiss",
+          "path": "arena/extra8/memory/upper/gpm_memory.index",
+          "sha256": "0d4ab7206e6ae9f8dcd7532fc822256f2780d0933c2b40a0e4ceeca9a94c2c00",
+          "size": 1219305517,
+          "vectors": 148841
+        },
+        {
+          "kind": "metadata",
+          "path": "arena/extra8/memory/upper/gpm_memory_meta.pt",
+          "records": 148841,
+          "sha256": "2d9080aa54eb1821f3f3f6ad651e8b427aded8fcfd9c82e99f7b43dca00a4048",
+          "size": 1302262213
+        }
+      ],
+      "producer_checkpoint": "PrediMem-public-e645741c"
+    },
+    "common.libero_head": {
+      "description": "LIBERO retrieval head",
+      "files": [
+        {
+          "kind": "head",
+          "path": "common/libero/gpm_task_head.pt",
+          "sha256": "336802a44aba794409e41ef2962b5f33ee93ded20bbad800b482e721e11c9152",
+          "size": 16792217
+        }
+      ],
+      "producer_checkpoint": "Pi0.5-LIBERO"
+    },
+    "libero.b50_positive": {
+      "description": "B50-per-task positive bank",
+      "files": [
+        {
+          "kind": "faiss",
+          "path": "libero/b50_positive/gpm_memory.index",
+          "sha256": "d76bc6af6101ce1bb155d3d79066edcbceb321a686f080a283deca5c2f130f2f",
+          "size": 16384045,
+          "vectors": 2000
+        },
+        {
+          "kind": "actions",
+          "path": "libero/b50_positive/gpm_memory_actions.npz",
+          "references": 2000,
+          "sha256": "dad98fec308465197aedf8946946ce5261ec93e9fba6eccd525ac9f06191fed0",
+          "size": 4407778
+        },
+        {
+          "kind": "metadata",
+          "path": "libero/b50_positive/gpm_memory_meta.pt",
+          "records": 2000,
+          "sha256": "e0199ab45e3d48e250a99084f14a0b12875db2605ab144654fec509217aeb1e8",
+          "size": 17425143
+        }
+      ],
+      "producer_checkpoint": "Pi0.5-LIBERO"
+    },
+    "libero.b6500_positive": {
+      "description": "B6500 positive-only bank",
+      "files": [
+        {
+          "kind": "faiss",
+          "path": "libero/b6500_positive/gpm_memory.index",
+          "sha256": "eda396cc4e0ba9ee2b1009f6752f8a54558472060e3413b45dd9d790ee5be8dc",
+          "size": 53248045,
+          "vectors": 6500
+        },
+        {
+          "kind": "actions",
+          "path": "libero/b6500_positive/gpm_memory_actions.npz",
+          "references": 6500,
+          "sha256": "0adbf837567e9a31151d9787750c0d47e45977c9327dd57089c4f41a999b9eb6",
+          "size": 12965707
+        },
+        {
+          "kind": "metadata",
+          "path": "libero/b6500_positive/gpm_memory_meta.pt",
+          "records": 6500,
+          "sha256": "d7513ee3c351ed55e98b424cd8ed116946186a85792e0cb90395259ea5da5438",
+          "size": 56358595
+        }
+      ],
+      "producer_checkpoint": "Pi0.5-LIBERO"
+    },
+    "libero.libero10_negative": {
+      "description": "LIBERO-10 negative slice",
+      "files": [
+        {
+          "kind": "faiss",
+          "path": "libero/libero10/negative/gpm_negative_memory.index",
+          "sha256": "def9aaa897a662256df955c9292fa7d659d40729128f53335714d77b1ae4bd27",
+          "size": 4497453,
+          "vectors": 549
+        },
+        {
+          "kind": "actions",
+          "path": "libero/libero10/negative/gpm_negative_memory_actions.npz",
+          "references": 549,
+          "sha256": "3cf174e1cf67247d5d3c7ab253018602060c16092e2cad24d79fd11dcea83342",
+          "size": 6959607
+        },
+        {
+          "kind": "metadata",
+          "path": "libero/libero10/negative/gpm_negative_memory_meta.pt",
+          "records": 549,
+          "sha256": "8c35132823049fcb6dec40d278e36bd89cbf789ee23ce62177ac575313bd52ff",
+          "size": 5288016,
+          "task_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "kind": "json",
+          "path": "libero/libero10/negative/slice_summary.json",
+          "sha256": "6f0409996a37c0f171bf9d6c9ecc060fe0de4187f2a7b2667e30de1a114e8750",
+          "size": 907
+        }
+      ],
+      "producer_checkpoint": "Pi0.5-LIBERO",
+      "task_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "libero.libero10_positive": {
+      "description": "LIBERO-10 positive slice",
+      "files": [
+        {
+          "kind": "faiss",
+          "path": "libero/libero10/positive/gpm_memory.index",
+          "sha256": "c43ac4d954c7cb6c13fd5d89d8c5205c61f79b10ff2c572a9d6f9a56e9a31ed4",
+          "size": 4096045,
+          "vectors": 500
+        },
+        {
+          "kind": "actions",
+          "path": "libero/libero10/positive/gpm_memory_actions.npz",
+          "references": 500,
+          "sha256": "a722f338a9229d69514d93fb23bfd9a638721a0e4eeb992c34b13f3751ea4e14",
+          "size": 1789641
+        },
+        {
+          "kind": "metadata",
+          "path": "libero/libero10/positive/gpm_memory_meta.pt",
+          "records": 500,
+          "sha256": "fbd3a11d75b114aa79a5ede65e9aaae16ab58be88e0c05a8c4b274fe64d63672",
+          "size": 4368935,
+          "task_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "kind": "json",
+          "path": "libero/libero10/positive/slice_summary.json",
+          "sha256": "05167cad737207724f2698e84c5507eb7ab24ae90d189c8e866dfa1946e32b0f",
+          "size": 897
+        }
+      ],
+      "producer_checkpoint": "Pi0.5-LIBERO",
+      "task_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "libero.ncpi_negative": {
+      "description": "N497 plus C-pi116 failure bank",
+      "files": [
+        {
+          "kind": "faiss",
+          "path": "libero/ncpi_negative/gpm_negative_memory.index",
+          "sha256": "558fe39be20c52b92eac5e1d4f5b83718171d4d12e27ebe6c9d86b39abfaa7a1",
+          "size": 5021741,
+          "vectors": 613
+        },
+        {
+          "kind": "actions",
+          "path": "libero/ncpi_negative/gpm_negative_memory_actions.npz",
+          "references": 613,
+          "sha256": "91306077e5cb9d5bef8a3ec5280a7284bce72bba554eb88d28168bfb2b335d44",
+          "size": 7374841
+        },
+        {
+          "kind": "metadata",
+          "path": "libero/ncpi_negative/gpm_negative_memory_meta.pt",
+          "records": 613,
+          "sha256": "49ff1f9ee15ba54dd45765e00e5dc1ec4e3c7188a0546c3e2c1d7fa02ab17321",
+          "size": 5963132
+        }
+      ],
+      "producer_checkpoint": "Pi0.5-LIBERO"
+    }
+  },
+  "repository": "JoeyXuan/traceflow-models",
+  "revision": "v1.0.0",
+  "schema_version": 1
+}

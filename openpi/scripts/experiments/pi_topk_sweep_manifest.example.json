@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "memory_quantity_manifest": {
+    "path": "memory_quantity_manifest.example.json",
+    "sha256": "REQUIRED"
+  },
+  "run_root": "../../logs/topk_sweep/pi_four_suites_seed7",
+  "python": "/path/to/user/miniforge3/envs/optimusvla-openpi/bin/python",
+  "gpu": "0",
+  "port": 8200,
+  "protocol_note": "All candidates use V1 positive+negative guidance on the four 10-task suites. Positive B6500: 1-k8, 10-k1/8, 50-k8/16/32 with C-pi negative reference 5-k4. After every positive run completes, freeze the selected positive configuration. Negative C-pi: 1-k1/4, 5-k4/8, max-k4/8. No prior, no Smol branch, and no interaction phase.",
+  "adopt_logs": {}
+}

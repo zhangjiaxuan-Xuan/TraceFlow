@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "run_root": "../../logs/cross_policy_long/example_run",
+  "gpu_pool": ["0", "1", "2", "3"],
+  "ports": [8600, 8700, 8800, 8900],
+  "resume": true,
+  "fail_fast": true,
+  "conditions": [
+    {
+      "id": "pi_base_libero10",
+      "consumer": "pi",
+      "mode": "base",
+      "suite": "libero_10",
+      "expected_tasks": 10,
+      "episodes_per_task": 100,
+      "episode_start": 0,
+      "seed": 7,
+      "seed_mapping": {
+        "scheme": "base_plus_task_and_episode",
+        "task_stride": 0,
+        "episode_stride": 0,
+        "record_required": false
+      },
+      "batch_size": 8,
+      "model_sha256": "REPLACE_WITH_64_HEX_MODEL_DIGEST",
+      "config_sha256": "REPLACE_WITH_64_HEX_CONFIG_DIGEST",
+      "cwd": "../../..",
+      "command": ["bash", "openpi/scripts/experiments/run_pi_cross_policy_long_eval.sh"],
+      "output_root": "../../logs/cross_policy_long/example_run/pi_base_libero10",
+      "output_log": "../../logs/cross_policy_long/example_run/pi_base_libero10/eval/libero_10.jsonl",
+      "existing": {
+        "log": {
+          "path": "REPLACE_WITH_EXPLICIT_EXISTING_JSONL",
+          "sha256": "REPLACE_WITH_64_HEX_LOG_DIGEST"
+        },
+        "identity": {
+          "path": "REPLACE_WITH_EXPLICIT_EXISTING_IDENTITY_JSON",
+          "sha256": "REPLACE_WITH_64_HEX_IDENTITY_DIGEST"
+        },
+        "summary": {
+          "path": "REPLACE_WITH_EXPLICIT_EXISTING_SUMMARY_JSON",
+          "sha256": "REPLACE_WITH_64_HEX_SUMMARY_DIGEST"
+        }
+      }
+    },
+    {
+      "id": "pi_base_libero90",
+      "consumer": "pi",
+      "mode": "base",
+      "suite": "libero_90",
+      "expected_tasks": 90,
+      "episodes_per_task": 100,
+      "episode_start": 0,
+      "seed": 7,
+      "seed_mapping": {
+        "scheme": "base_plus_task_and_episode",
+        "task_stride": 0,
+        "episode_stride": 0,
+        "record_required": false
+      },
+      "batch_size": 8,
+      "model_sha256": "REPLACE_WITH_64_HEX_MODEL_DIGEST",
+      "config_sha256": "REPLACE_WITH_64_HEX_CONFIG_DIGEST",
+      "cwd": "../../..",
+      "command": ["bash", "openpi/scripts/experiments/run_pi_cross_policy_long_eval.sh"],
+      "output_root": "../../logs/cross_policy_long/example_run/pi_base_libero90",
+      "output_log": "../../logs/cross_policy_long/example_run/pi_base_libero90/eval/libero_90.jsonl"
+    },
+    {
+      "id": "pi_fixed_prior_libero10",
+      "consumer": "pi",
+      "mode": "fixed_prior",
+      "suite": "libero_10",
+      "expected_tasks": 10,
+      "episodes_per_task": 100,
+      "episode_start": 0,
+      "seed": 7,
+      "seed_mapping": {
+        "scheme": "base_plus_task_and_episode",
+        "task_stride": 0,
+        "episode_stride": 0,
+        "record_required": false
+      },
+      "batch_size": 8,
+      "model_sha256": "REPLACE_WITH_64_HEX_MODEL_DIGEST",
+      "config_sha256": "REPLACE_WITH_64_HEX_FIXED_PRIOR_CONFIG_DIGEST",
+      "cwd": "../../..",
+      "command": ["bash", "openpi/scripts/experiments/run_pi_cross_policy_long_eval.sh"],
+      "output_root": "../../logs/cross_policy_long/example_run/pi_fixed_prior_libero10",
+      "output_log": "../../logs/cross_policy_long/example_run/pi_fixed_prior_libero10/eval/libero_10.jsonl"
+    },
+    {
+      "id": "pi_fixed_prior_libero90",
+      "consumer": "pi",
+      "mode": "fixed_prior",
+      "suite": "libero_90",
+      "expected_tasks": 90,
+      "episodes_per_task": 100,
+      "episode_start": 0,
+      "seed": 7,
+      "seed_mapping": {
+        "scheme": "base_plus_task_and_episode",
+        "task_stride": 0,
+        "episode_stride": 0,
+        "record_required": false
+      },
+      "batch_size": 8,
+      "model_sha256": "REPLACE_WITH_64_HEX_MODEL_DIGEST",
+      "config_sha256": "REPLACE_WITH_64_HEX_FIXED_PRIOR_CONFIG_DIGEST",
+      "cwd": "../../..",
+      "command": ["bash", "openpi/scripts/experiments/run_pi_cross_policy_long_eval.sh"],
+      "output_root": "../../logs/cross_policy_long/example_run/pi_fixed_prior_libero90",
+      "output_log": "../../logs/cross_policy_long/example_run/pi_fixed_prior_libero90/eval/libero_90.jsonl"
+    },
+    {
+      "id": "smol_base_libero10",
+      "consumer": "smol",
+      "mode": "base",
+      "suite": "libero_10",
+      "expected_tasks": 10,
+      "episodes_per_task": 100,
+      "episode_start": 0,
+      "seed": 7,
+      "seed_mapping": {
+        "scheme": "base_plus_task_and_episode",
+        "task_stride": 0,
+        "episode_stride": 1,
+        "record_required": true
+      },
+      "batch_size": 8,
+      "model_sha256": "REPLACE_WITH_64_HEX_MODEL_DIGEST",
+      "config_sha256": "REPLACE_WITH_64_HEX_CONFIG_DIGEST",
+      "cwd": "../../..",
+      "command": [
+        "/path/to/envs/.venv/bin/python",
+        "smolvla/scripts/eval_libero.py",
+        "--checkpoint",
+        "REPLACE_WITH_SMOL_CHECKPOINT",
+        "--suite",
+        "{suite}",
+        "--task-ids",
+        "all",
+        "--output-dir",
+        "{run_root}",
+        "--seed",
+        "{seed}",
+        "--episode-start",
+        "{episode_start}",
+        "--episodes-per-task",
+        "{episodes_per_task}",
+        "--batch-size",
+        "{batch_size}",
+        "--no-save-videos",
+        "--no-save-trajectories"
+      ],
+      "output_root": "../../logs/cross_policy_long/example_run/smol_base_libero10",
+      "output_log": "../../logs/cross_policy_long/example_run/smol_base_libero10/episodes.jsonl"
+    },
+    {
+      "id": "smol_base_libero90",
+      "consumer": "smol",
+      "mode": "base",
+      "suite": "libero_90",
+      "expected_tasks": 90,
+      "episodes_per_task": 100,
+      "episode_start": 0,
+      "seed": 7,
+      "seed_mapping": {
+        "scheme": "base_plus_task_and_episode",
+        "task_stride": 0,
+        "episode_stride": 1,
+        "record_required": true
+      },
+      "batch_size": 8,
+      "model_sha256": "REPLACE_WITH_64_HEX_MODEL_DIGEST",
+      "config_sha256": "REPLACE_WITH_64_HEX_CONFIG_DIGEST",
+      "cwd": "../../..",
+      "command": [
+        "/path/to/envs/.venv/bin/python",
+        "smolvla/scripts/eval_libero.py",
+        "--checkpoint",
+        "REPLACE_WITH_SMOL_CHECKPOINT",
+        "--suite",
+        "{suite}",
+        "--task-ids",
+        "all",
+        "--output-dir",
+        "{run_root}",
+        "--seed",
+        "{seed}",
+        "--episode-start",
+        "{episode_start}",
+        "--episodes-per-task",
+        "{episodes_per_task}",
+        "--batch-size",
+        "{batch_size}",
+        "--no-save-videos",
+        "--no-save-trajectories"
+      ],
+      "output_root": "../../logs/cross_policy_long/example_run/smol_base_libero90",
+      "output_log": "../../logs/cross_policy_long/example_run/smol_base_libero90/episodes.jsonl"
+    }
+  ]
+}

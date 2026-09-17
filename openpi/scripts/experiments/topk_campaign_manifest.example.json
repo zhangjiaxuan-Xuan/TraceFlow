@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "pi_manifest": "pi_topk_sweep_manifest.example.json",
+  "run_root": "../../logs/topk_campaign/pi_v1_four_suites_seed7",
+  "gpu_pool": ["0", "1", "2", "3"],
+  "ports": [8200, 8300, 8400, 8500],
+  "fail_fast": true,
+  "resume": true
+}

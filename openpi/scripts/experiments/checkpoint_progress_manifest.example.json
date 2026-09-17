@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "openpi_root": "../..",
+  "artifact_root": "../../artifacts/checkpoint_progress",
+  "run_root": "../../logs/checkpoint_progress",
+  "python": "/path/to/user/miniforge3/envs/optimusvla-openpi/bin/python",
+  "config_name": "pi05_libero",
+  "failure_source": "N",
+  "fixed_prior_top_k": 8,
+  "topk_selection": {
+    "path": "../../artifacts/topk_selection/pi.final.json",
+    "sha256": "REQUIRED"
+  },
+  "evaluation": {"seed": 7, "episodes_per_task": 100, "batch_size": 8},
+  "sources": {
+    "B": {
+      "manifest": "../../artifacts/prior_head_reproduction/manifest.jsonl",
+      "sha256": "REQUIRED",
+      "producer": "offline-demonstration",
+      "producer_field": "producer"
+    },
+    "N": {
+      "manifest": "../../artifacts/checkpoint_progress/sources/pi05_base.jsonl",
+      "sha256": "REQUIRED",
+      "producer": "pi0.5-base",
+      "producer_field": "producer"
+    },
+    "S": {
+      "manifest": "../../artifacts/checkpoint_progress/sources/smolvla-base.jsonl",
+      "sha256": "REQUIRED",
+      "producer": "smolvla-base",
+      "producer_field": "producer"
+    }
+  },
+  "checkpoints": [
+    {"alias": "6k", "train_state_step": 6000, "saved_step": 5999, "jax_dir": "../../checkpoints/pi05_libero/progress/5999", "pytorch_dir": "../../checkpoints/pi05_libero_pytorch/progress/6k", "identity_file": "../../checkpoints/pi05_libero/progress/5999/checkpoint_identity.json"},
+    {"alias": "10k", "train_state_step": 10000, "saved_step": 9999, "jax_dir": "../../checkpoints/pi05_libero/progress/9999", "pytorch_dir": "../../checkpoints/pi05_libero_pytorch/progress/10k", "identity_file": "../../checkpoints/pi05_libero/progress/9999/checkpoint_identity.json"},
+    {"alias": "14k", "train_state_step": 14000, "saved_step": 13999, "jax_dir": "../../checkpoints/pi05_libero/progress/13999", "pytorch_dir": "../../checkpoints/pi05_libero_pytorch/progress/14k", "identity_file": "../../checkpoints/pi05_libero/progress/13999/checkpoint_identity.json"},
+    {"alias": "18k", "train_state_step": 18000, "saved_step": 17999, "jax_dir": "../../checkpoints/pi05_libero/progress/17999", "pytorch_dir": "../../checkpoints/pi05_libero_pytorch/progress/18k", "identity_file": "../../checkpoints/pi05_libero/progress/17999/checkpoint_identity.json"},
+    {"alias": "22k", "train_state_step": 22000, "saved_step": 21999, "jax_dir": "../../checkpoints/pi05_libero/progress/21999", "pytorch_dir": "../../checkpoints/pi05_libero_pytorch/progress/22k", "identity_file": "../../checkpoints/pi05_libero/progress/21999/checkpoint_identity.json"},
+    {"alias": "26k", "train_state_step": 26000, "saved_step": 25999, "jax_dir": "../../checkpoints/pi05_libero/progress/25999", "pytorch_dir": "../../checkpoints/pi05_libero_pytorch/progress/26k", "identity_file": "../../checkpoints/pi05_libero/progress/25999/checkpoint_identity.json"},
+    {"alias": "30k", "train_state_step": 30000, "saved_step": 29999, "jax_dir": "../../checkpoints/pi05_libero/progress/29999", "pytorch_dir": "../../checkpoints/pi05_libero_pytorch/progress/30k", "identity_file": "../../checkpoints/pi05_libero/progress/29999/checkpoint_identity.json"}
+  ]
+}

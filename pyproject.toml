@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "traceflow-robotics"
+version = "1.0.0"
+description = "Reproducible memory-guided VLA evaluation for LIBERO and RoboMemArena"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+dependencies = []
+
+[project.optional-dependencies]
+assets = ["modelscope>=1.28,<2", "numpy>=1.26,<2"]
+test = ["pytest>=8,<9"]
+
+[project.scripts]
+traceflow = "traceflow.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/traceflow"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SAMPLE_ID=${1:?Usage: $0 sample0|sample1|sample2|sample3|sample4|sample5}
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+FULL26_ROOT="${FULL26_ROOT:-/path/to/storage/datasets/robotics/RoboMemArena/derived/retrieval_full26_tdense5/predimem_2048_fp32}"
+
+case "${SAMPLE_ID}" in
+  sample0) GLOBAL_MODE=shadow;  MIN_POSTERIOR=0.35; MIN_SCORE=0.45; MIN_MARGIN=0.03 ;;
+  sample1) GLOBAL_MODE=control; MIN_POSTERIOR=0.65; MIN_SCORE=0.70; MIN_MARGIN=0.10 ;;
+  sample2) GLOBAL_MODE=control; MIN_POSTERIOR=0.55; MIN_SCORE=0.62; MIN_MARGIN=0.07 ;;
+  sample3) GLOBAL_MODE=control; MIN_POSTERIOR=0.45; MIN_SCORE=0.55; MIN_MARGIN=0.05 ;;
+  sample4) GLOBAL_MODE=control; MIN_POSTERIOR=0.35; MIN_SCORE=0.45; MIN_MARGIN=0.03 ;;
+  sample5) GLOBAL_MODE=control; MIN_POSTERIOR=0.25; MIN_SCORE=0.35; MIN_MARGIN=0.00 ;;
+  *) echo "Unknown sample: ${SAMPLE_ID}" >&2; exit 2 ;;
+esac
+
+export TASK_IDS="${TASK_IDS:-6,7,8,9,10,15,16}"
+export MEMORY_ALLOWED_TASK_IDS="${MEMORY_ALLOWED_TASK_IDS:-${TASK_IDS}}"
+export UPPER_GUIDANCE_ALLOWED_TASK_IDS="${UPPER_GUIDANCE_ALLOWED_TASK_IDS:-${TASK_IDS}}"
+export EPISODES_PER_TASK="${EPISODES_PER_TASK:-10}"
+export SEED="${SEED:-50}"
+export UPPER_BATCH_SIZE="${UPPER_BATCH_SIZE:-32}"
+export LOWER_BATCH_SIZE="${LOWER_BATCH_SIZE:-32}"
+export ENV_WORKERS="${ENV_WORKERS:-32}"
+export SAVE_VIDEO="${SAVE_VIDEO:-0}"
+export RECORD_MEMORY_DATA=0
+
+# Comparison 1 stays disabled. This experiment uses one shared task bank per candidate query.
+export UPPER_GUIDANCE_FEEDBACK_MODE=off
+export UPPER_GUIDANCE_FEEDBACK_LOWER_RESCUE_ENABLED=0
+export UPPER_GUIDANCE_LOWER_GLOBAL_MODE="${GLOBAL_MODE}"
+export UPPER_GUIDANCE_LOWER_GLOBAL_TOP_K="${UPPER_GUIDANCE_LOWER_GLOBAL_TOP_K:-16}"
+export UPPER_GUIDANCE_LOWER_GLOBAL_PROBE_CANDIDATES="${UPPER_GUIDANCE_LOWER_GLOBAL_PROBE_CANDIDATES:-4}"
+export UPPER_GUIDANCE_LOWER_GLOBAL_MIN_POSTERIOR="${MIN_POSTERIOR}"
+export UPPER_GUIDANCE_LOWER_GLOBAL_MIN_SCORE="${MIN_SCORE}"
+export UPPER_GUIDANCE_LOWER_GLOBAL_MIN_MARGIN="${MIN_MARGIN}"
+export UPPER_GUIDANCE_LOWER_GLOBAL_PROGRESS_SCALE="${UPPER_GUIDANCE_LOWER_GLOBAL_PROGRESS_SCALE:-0.15}"
+
+RUN_NAME="${SAMPLE_ID}_${GLOBAL_MODE}_p${MIN_POSTERIOR}_s${MIN_SCORE}_m${MIN_MARGIN}_seed${SEED}"
+export RUN_ROOT="${RUN_ROOT:-${FULL26_ROOT}/eval/lower_global_round2/${RUN_NAME}}"
+exec bash "${ROOT}/scripts/robomemarena/run_predimem_counting_history_knn_self.sh" fusion_fusion_action

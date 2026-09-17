@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "benchmark": "LIBERO-10",
+  "protocol": "tracebankstack-v1",
+  "tasks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "evaluation": {"seed": 7, "episodes_per_task": 50, "batch_size": 16, "env_workers": 32},
+  "memory": {"asset_groups": ["common.libero_head", "cl.libero10"], "positive_top_k": 16, "negative_top_k": 8, "branches": ["success", "failure", "joint"]}
+}
+

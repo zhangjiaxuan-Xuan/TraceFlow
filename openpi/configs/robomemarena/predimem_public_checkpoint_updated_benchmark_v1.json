@@ -1,0 +1,47 @@
+{
+  "protocol_id": "predimem-public-checkpoint_updated-robomemarena_v1",
+  "purpose": "Freeze the public May PrediMem checkpoint as the base model under the updated RoboMemArena evaluator.",
+  "comparison_scope": "Use as the local base coordinate only; do not compare absolute scores directly with the paper table.",
+  "benchmark": {
+    "upstream_commit": "d9f83ac5182e25ad7f0a301a77a0b667f2392df1",
+    "bddl_count": 26,
+    "bddl_content_sha256": "f55c1b27bc14837bfebeb390a085fbd77de4677b6403cb256a6e3ab7a82e7c4a",
+    "files": {
+      "evaluation_benchmark/async_vlm26_reference/eval_fullvlm26_async_vlm_vla.py": "e8ead748a514e363258bba42571372b4b3c2878a95fde9e429d6ee743de3d4c4",
+      "evaluation_benchmark/async_vlm26_reference/fullvlm_v2_26_memory_tasks.json": "46cbae50734eb91940e37a1312916f356cca1401a7b5e6d195157eeb82d93954",
+      "evaluation_benchmark/openpi_minimal_runtime/eval_common.py": "7e11bae25f40e6112b1db02ffbe2fa0f7f8f27658be98176b0c8a21b38f6eb3d",
+      "evaluation_benchmark/scripts/task2_26_reference_stage.py": "0ab5e19cb7b90844b86fe04a76facc0364af55f1e841c4754aa675404a318538"
+    }
+  },
+  "model": {
+    "huggingface_download_revision": "e645741c2f34f27e1596bfa89e856d6f3560ed90",
+    "vla_checkpoint": "/path/to/storage/datasets/robotics/RoboMemArena/derived/predimem_dual_tower/checkpoints/vla_alltask_pytorch",
+    "vla_model_size": 7233650408,
+    "vla_norm_stats_sha256": "0c0d329a3345d2ea2e1348dac0edf4ae175085fac200cca1cab967aae1ae1767",
+    "vlm_checkpoint": "/path/to/local/data/robomemarena/models/PrediMem/vlm_tasks1to26_ckpt74500",
+    "vlm_model_size": 17601466184,
+    "vlm_config_sha256": "252872427e7ebb28d054c191f83d67a7db854dbfecb9dee5b551879ebd0ad59c"
+  },
+  "evaluation": {
+    "seed_start": 50,
+    "episodes_per_task": 51,
+    "seed_end_inclusive": 100,
+    "replan_steps": 10,
+    "max_steps": 2500,
+    "num_steps_wait": 10,
+    "post_goal_steps": 200,
+    "vlm_interval": 5,
+    "n_recent": 5,
+    "keyframe_max": 0,
+    "merge_distance": 6,
+    "tsr": "all-required-stage success with updated counting extra-pour scorer",
+    "csr": "mean required-stage completion percentage"
+  },
+  "throughput": {
+    "upper_batch_size": 32,
+    "lower_batch_size": 32,
+    "environment_workers": 64,
+    "upper_gpu": 0,
+    "lower_gpu": 1
+  }
+}

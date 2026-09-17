@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "run_root": "../../logs/stage2/memory_provider_match_seed7",
+  "gpu_pool": [0, 1, 2, 3],
+  "ports": [8200, 8300, 8400, 8500],
+  "resume": true,
+  "policies": {
+    "pi": {
+      "checkpoint_dir": "/path/to/local/data/openpi/openpi-assets/checkpoints/pi05_libero_pytorch",
+      "checkpoint_identity": {"path": "/path/to/local/data/openpi/openpi-assets/checkpoints/pi05_libero_pytorch/model.safetensors", "sha256": "REQUIRED"},
+      "head": {"path": "../../artifacts/prior_head_reproduction/head_task_file/best.pt", "sha256": "REQUIRED"},
+      "selection": {"path": "../../logs/memory_topk/pi/final_selection.json", "sha256": "REQUIRED"},
+      "python": "/path/to/user/miniforge3/envs/optimusvla-openpi/bin/python"
+    },
+    "smol": {
+      "checkpoint_dir": "/path/to/local/data/huggingface/models/HuggingFaceVLA/smolvla_libero",
+      "checkpoint_identity": {"path": "/path/to/local/data/huggingface/models/HuggingFaceVLA/smolvla_libero/model.safetensors", "sha256": "REQUIRED"},
+      "head": {"path": "../../../smolvla/artifacts/head/best.pt", "sha256": "REQUIRED"},
+      "selection": {"path": "../../../smolvla/logs/memory_topk/final_selection.json", "sha256": "REQUIRED"},
+      "python": "/path/to/envs/.venv/bin/python"
+    }
+  },
+  "providers": {
+    "pi-mem": {
+      "encodings": {
+        "pi": {
+          "root": "../../artifacts/provider_match/pi-mem/pi",
+          "summary": {"path": "../../artifacts/provider_match/pi-mem/pi/build_summary.json", "sha256": "REQUIRED"},
+          "positive_count_per_task": 50,
+          "negative_count_per_task": 10,
+          "positive": {
+            "meta": {"path": "../../artifacts/provider_match/pi-mem/pi/positive/gpm_memory_meta.pt", "sha256": "REQUIRED"},
+            "index": {"path": "../../artifacts/provider_match/pi-mem/pi/positive/gpm_memory.index", "sha256": "REQUIRED"},
+            "actions": {"path": "../../artifacts/provider_match/pi-mem/pi/positive/gpm_memory_actions.npz", "sha256": "REQUIRED"}
+          },
+          "negative": {
+            "meta": {"path": "../../artifacts/provider_match/pi-mem/pi/negative/gpm_negative_memory_meta.pt", "sha256": "REQUIRED"},
+            "index": {"path": "../../artifacts/provider_match/pi-mem/pi/negative/gpm_negative_memory.index", "sha256": "REQUIRED"},
+            "actions": {"path": "../../artifacts/provider_match/pi-mem/pi/negative/gpm_negative_memory_actions.npz", "sha256": "REQUIRED"}
+          }
+        },
+        "smol": {
+          "root": "../../../smolvla/artifacts/provider_match/pi-mem/smol",
+          "summary": {"path": "../../../smolvla/artifacts/provider_match/pi-mem/smol/build_summary.json", "sha256": "REQUIRED"},
+          "positive_count_per_task": 50,
+          "negative_count_per_task": 50,
+          "positive": {
+            "meta": {"path": "../../../smolvla/artifacts/provider_match/pi-mem/smol/positive/gpm_memory_meta.pt", "sha256": "REQUIRED"},
+            "index": {"path": "../../../smolvla/artifacts/provider_match/pi-mem/smol/positive/gpm_memory.index", "sha256": "REQUIRED"},
+            "actions": {"path": "../../../smolvla/artifacts/provider_match/pi-mem/smol/positive/gpm_memory_actions.npz", "sha256": "REQUIRED"}
+          },
+          "negative": {
+            "meta": {"path": "../../../smolvla/artifacts/provider_match/pi-mem/smol/negative/gpm_negative_memory_meta.pt", "sha256": "REQUIRED"},
+            "index": {"path": "../../../smolvla/artifacts/provider_match/pi-mem/smol/negative/gpm_negative_memory.index", "sha256": "REQUIRED"},
+            "actions": {"path": "../../../smolvla/artifacts/provider_match/pi-mem/smol/negative/gpm_negative_memory_actions.npz", "sha256": "REQUIRED"}
+          }
+        }
+      }
+    },
+    "smol-mem": {
+      "encodings": {
+        "pi": {
+          "root": "../../artifacts/provider_match/smol-mem/pi",
+          "summary": {"path": "../../artifacts/provider_match/smol-mem/pi/build_summary.json", "sha256": "REQUIRED"},
+          "positive_count_per_task": 50,
+          "negative_count_per_task": 10,
+          "positive": {
+            "meta": {"path": "../../artifacts/provider_match/smol-mem/pi/positive/gpm_memory_meta.pt", "sha256": "REQUIRED"},
+            "index": {"path": "../../artifacts/provider_match/smol-mem/pi/positive/gpm_memory.index", "sha256": "REQUIRED"},
+            "actions": {"path": "../../artifacts/provider_match/smol-mem/pi/positive/gpm_memory_actions.npz", "sha256": "REQUIRED"}
+          },
+          "negative": {
+            "meta": {"path": "../../artifacts/provider_match/smol-mem/pi/negative/gpm_negative_memory_meta.pt", "sha256": "REQUIRED"},
+            "index": {"path": "../../artifacts/provider_match/smol-mem/pi/negative/gpm_negative_memory.index", "sha256": "REQUIRED"},
+            "actions": {"path": "../../artifacts/provider_match/smol-mem/pi/negative/gpm_negative_memory_actions.npz", "sha256": "REQUIRED"}
+          }
+        },
+        "smol": {
+          "root": "../../../smolvla/artifacts/provider_match/smol-mem/smol",
+          "summary": {"path": "../../../smolvla/artifacts/provider_match/smol-mem/smol/build_summary.json", "sha256": "REQUIRED"},
+          "positive_count_per_task": 50,
+          "negative_count_per_task": 50,
+          "positive": {
+            "meta": {"path": "../../../smolvla/artifacts/provider_match/smol-mem/smol/positive/gpm_memory_meta.pt", "sha256": "REQUIRED"},
+            "index": {"path": "../../../smolvla/artifacts/provider_match/smol-mem/smol/positive/gpm_memory.index", "sha256": "REQUIRED"},
+            "actions": {"path": "../../../smolvla/artifacts/provider_match/smol-mem/smol/positive/gpm_memory_actions.npz", "sha256": "REQUIRED"}
+          },
+          "negative": {
+            "meta": {"path": "../../../smolvla/artifacts/provider_match/smol-mem/smol/negative/gpm_negative_memory_meta.pt", "sha256": "REQUIRED"},
+            "index": {"path": "../../../smolvla/artifacts/provider_match/smol-mem/smol/negative/gpm_negative_memory.index", "sha256": "REQUIRED"},
+            "actions": {"path": "../../../smolvla/artifacts/provider_match/smol-mem/smol/negative/gpm_negative_memory_actions.npz", "sha256": "REQUIRED"}
+          }
+        }
+      }
+    }
+  }
+}

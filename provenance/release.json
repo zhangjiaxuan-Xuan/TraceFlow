@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "release": "traceflow-v1",
+  "code_repository": "https://github.com/zhangjiaxuan-Xuan/TraceFlow",
+  "asset_repository": "JoeyXuan/traceflow-models",
+  "official_models": {
+    "pi05_libero": "gs://openpi-assets/checkpoints/pi05_libero",
+    "predimem_repository": "huashuolei/PrediMem",
+    "predimem_revision": "e645741c2f34f27e1596bfa89e856d6f3560ed90"
+  },
+  "benchmarks": {
+    "libero_commit": "8f1084e3132a39270c3a13ebe37270a43ece2a01",
+    "libero_plus_commit": "4976dc30028e805ff8094b55501d532c48fec182",
+    "robomemarena_frozen_protocol_commit": "d9f83ac5182e25ad7f0a301a77a0b667f2392df1"
+  },
+  "claims": {
+    "libero_98_3": "best-of-suite envelope from four independent configurations",
+    "not_claimed": "one configuration with 1966 successes in 2000 episodes",
+    "canonical_single_configuration": "1960/2000 (98.0%)"
+  }
+}
+

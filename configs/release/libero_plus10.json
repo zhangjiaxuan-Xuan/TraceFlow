@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "benchmark": "LIBERO-Plus-10",
+  "protocol": "full-v1-libero10-memory",
+  "tasks": ["all-2519-variants"],
+  "evaluation": {"seed": 7, "episodes_per_task": 1, "batch_size": 8, "env_workers": 16},
+  "memory": {"asset_groups": ["common.libero_head", "libero.libero10_positive", "libero.libero10_negative"], "positive_top_k": 16, "negative_top_k": 8, "time_version": "v1"},
+  "reported": {"successes": 2043, "episodes": 2519, "success_rate": 0.811}
+}
+

@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "consumer": "pi",
+  "positive_top_k": 8,
+  "negative_top_k": 8
+}
