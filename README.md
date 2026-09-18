@@ -313,23 +313,21 @@ conda run -n traceflow-openpi python scripts/train/train_retrieval_head.py \
 
 Use `--variant lower` or `--variant upper` for a single tower, and `--resume` to continue from `last.pt`. The output includes runtime-compatible `best.pt` and `last.pt`, `metrics.jsonl`, deterministic split indices, and a SHA-256 provenance manifest.
 
-## Validation and licensing
-
-### Citation
+## Citation
 
 If you use TraceFlow in your research, please cite:
 
 ```bibtex
 @article{zhang2026traceflow,
   title   = {TraceFlow: Guiding Frozen Flow-Matching Robot Policies with Success and Failure Traces},
-  author  = {Zhang, Jiaxuan and Liu, Ruizhe and Zhang, Yu and Yang, Yanchao},
+  author  = {Jiaxuan Zhang and Ruizhe Liu and Yu Zhang and Yanchao Yang},
   journal = {arXiv preprint arXiv:2609.20646},
   year    = {2026},
   url     = {https://arxiv.org/abs/2609.20646}
 }
 ```
 
-### Validation and license scope
+## Validation and licensing
 
 Run the complete static release gate after modifying code or documentation:
 
@@ -338,3 +336,15 @@ bash scripts/acceptance/run_static.sh
 ```
 
 TraceFlow code is released under Apache-2.0. Embedded or fetched third-party components, benchmarks, assets, and official checkpoints retain their original licenses and notices; see `THIRD_PARTY_NOTICES.md` before redistribution.
+
+## Acknowledgments and references
+
+We acknowledge the following open-source projects and methodological references:
+
+- **[OpenPI](https://github.com/Physical-Intelligence/openpi)** by Physical Intelligence provides the policy runtime on which our modified inference and evaluation code builds.
+- **[InfoNCE / Contrastive Predictive Coding](https://arxiv.org/abs/1807.03748)** provides background for contrastive representation learning. [info-nce-pytorch](https://github.com/RElbers/info-nce-pytorch) is a related reference implementation; this acknowledgment does not assert that its code is a dependency or was copied into this release.
+- **[On the Guidance of Flow Matching](https://arxiv.org/abs/2502.02150)** ([official implementation](https://github.com/AI4Science-WestlakeU/flow_guidance)) provides the methodological basis for density-dependent flow guidance. TraceFlow adapts this principle to retrieved successful and failed robot action traces with bounded early intervention.
+
+We thank the authors and maintainers for making these resources available.
+These acknowledgments do not replace the original licenses or the notices in
+[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
