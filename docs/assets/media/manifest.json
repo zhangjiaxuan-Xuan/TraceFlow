@@ -1,0 +1,62 @@
+[
+  {
+    "id": "tape-traceflow",
+    "source": "pick up the tape-done.mp4",
+    "source_duration_seconds": 79.65,
+    "selected_source_seconds": 79.65,
+    "playback_speed": 4,
+    "target_duration_seconds": 19.9125,
+    "gif_fps": 10,
+    "gif_bytes": 11854835
+  },
+  {
+    "id": "tape-baseline",
+    "source": "pick up the tape-stuck.mp4",
+    "source_duration_seconds": 61.1,
+    "selected_source_seconds": 61.1,
+    "playback_speed": 4,
+    "target_duration_seconds": 15.275,
+    "gif_fps": 10,
+    "gif_bytes": 8814960
+  },
+  {
+    "id": "fruits-traceflow",
+    "source": "place the fruits-right sequence.mp4",
+    "source_duration_seconds": 73.65,
+    "selected_source_seconds": 73.65,
+    "playback_speed": 4,
+    "target_duration_seconds": 18.4125,
+    "gif_fps": 10,
+    "gif_bytes": 10572735
+  },
+  {
+    "id": "fruits-baseline",
+    "source": "place the fruits-wrong sequence.mp4",
+    "source_duration_seconds": 92.28,
+    "selected_source_seconds": 92.28,
+    "playback_speed": 4,
+    "target_duration_seconds": 23.07,
+    "gif_fps": 10,
+    "gif_bytes": 12738186
+  },
+  {
+    "id": "drawer-traceflow",
+    "source": "place the tape-right drawer.mp4",
+    "source_duration_seconds": 102.34,
+    "selected_source_seconds": 77,
+    "playback_speed": 4,
+    "target_duration_seconds": 19.25,
+    "gif_fps": 10,
+    "gif_bytes": 11396172
+  },
+  {
+    "id": "drawer-baseline",
+    "source": "place the tape-wrong drawer.mp4",
+    "source_duration_seconds": 99.03,
+    "selected_source_seconds": 99.03,
+    "playback_speed": 4,
+    "target_duration_seconds": 24.7575,
+    "gif_fps": 10,
+    "gif_bytes": 14399009
+  }
+]

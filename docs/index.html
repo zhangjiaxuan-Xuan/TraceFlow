@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TraceFlow guides frozen flow-matching robot policies using progress-aligned success and failure traces, without deployment-time policy updates.">
+  <meta name="theme-color" content="#f7f8f4">
+  <meta property="og:title" content="TraceFlow — Learning from outcomes, without changing weights">
+  <meta property="og:description" content="Progress-aligned experience guidance for frozen robot policies. Explore real-world comparisons, the method, and results.">
+  <meta property="og:type" content="website">
+  <title>TraceFlow | Success and Failure Trace Guidance</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site-config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><a class="wordmark" href="#">Trace<span>Flow</span><span class="mark" aria-hidden="true">↗</span></a><nav aria-label="Main navigation"><a href="#demonstrations">Demos</a><a href="#method">Method</a><a href="#results">Results</a><a href="#resources">Resources</a></nav></header>
+  <main id="main">
+    <section class="hero section-wrap">
+      <p class="eyebrow"><span class="live-dot"></span> Experience-guided robot manipulation</p>
+      <h1>Trace<span>Flow</span><svg viewBox="0 0 110 90" aria-hidden="true"><path d="M5 78C29 78 21 43 48 43S73 12 99 12M81 4l20 8-10 18"/></svg></h1>
+      <h2>Guiding Frozen Flow-Matching Robot Policies<br class="desktop-break"> with Success and Failure Traces</h2>
+      <p class="hero-summary">Reuse what worked. Steer away from what did not.<br>A bounded action guidance field, with no deployment-time policy updates.</p>
+      <div class="authors" aria-label="Authors"><span>Jiaxuan Zhang<sup>1,2</sup></span><span>Ruizhe Liu<sup>1</sup></span><span>Yu Zhang<sup>1</sup></span><span>Yanchao Yang<sup>1,*</sup></span></div>
+      <p class="affiliations"><span><sup>1</sup> The University of Hong Kong</span><span><sup>2</sup> Southern University of Science and Technology</span></p>
+      <p class="correspondence">* Corresponding author<span id="contact"></span></p>
+      <div id="resources" class="resource-buttons" aria-label="Project resources">
+        <a class="resource disabled" data-resource="arxiv" aria-disabled="true"><img class="brand-icon" src="assets/icons/arxiv.svg" alt="" aria-hidden="true"><span>Paper<small>Coming soon</small></span></a>
+        <a class="resource disabled" data-resource="github" aria-disabled="true"><img class="brand-icon" src="assets/icons/github.svg" alt="" aria-hidden="true"><span>Code<small>Coming soon</small></span></a>
+        <a class="resource disabled" data-resource="modelscope" aria-disabled="true"><img class="brand-icon" src="assets/icons/modelscope.ico" alt="" aria-hidden="true"><span>Model<small>Coming soon</small></span></a>
+        <a class="resource disabled" data-resource="data" aria-disabled="true"><img class="brand-icon" src="assets/icons/modelscope.ico" alt="" aria-hidden="true"><span>Real-world Data<small>Coming soon</small></span></a>
+      </div>
+      <p class="release-note">Explore the paper, code, models, and real-world dataset.</p>
+    </section>
+
+    <section class="section-wrap demos" id="demonstrations" aria-labelledby="demos-heading">
+      <div class="section-heading"><div><p class="eyebrow">01 / On the real robot</p><h2 id="demos-heading">Same policy. Different execution.</h2></div><p>Three tasks. Two behaviors.<br>Selected rollout comparisons at 4× speed.</p></div>
+      <div class="demo-toolbar"><p>Compare each task vertically: baseline above, TraceFlow below.</p><button id="animation-toggle" class="animation-toggle" aria-pressed="false">Pause animations</button></div>
+      <div class="demo-matrix-scroll"><div class="demo-matrix">
+      <h3 class="task-heading">T1 · Precise pickup</h3>
+<h3 class="task-heading">T2 · Ordered packing</h3>
+<h3 class="task-heading">T3 · Drawer selection</h3>
+      <figure class="video-card baseline"><div class="video-label"><span><i></i>π₀.₅ Baseline</span><span class="speed">4× speed</span></div><div class="media-frame"><img data-rollout="tape-baseline" src="assets/media/tape-baseline.jpg" width="480" height="270" alt="T1 · Precise pickup: Pickup stalls" decoding="async"></div><figcaption><strong>Pickup stalls</strong></figcaption></figure>
+<figure class="video-card baseline"><div class="video-label"><span><i></i>π₀.₅ Baseline</span><span class="speed">4× speed</span></div><div class="media-frame"><img data-rollout="fruits-baseline" src="assets/media/fruits-baseline.jpg" width="480" height="270" alt="T2 · Ordered packing: Wrong sequence" decoding="async"></div><figcaption><strong>Wrong sequence</strong></figcaption></figure>
+<figure class="video-card baseline"><div class="video-label"><span><i></i>π₀.₅ Baseline</span><span class="speed">4× speed</span></div><div class="media-frame"><img data-rollout="drawer-baseline" src="assets/media/drawer-baseline.jpg" width="480" height="270" alt="T3 · Drawer selection: Wrong drawer" decoding="async"></div><figcaption><strong>Wrong drawer</strong></figcaption></figure>
+<figure class="video-card traceflow"><div class="video-label"><span><i></i>TraceFlow</span><span class="speed">4× speed</span></div><div class="media-frame"><img data-rollout="tape-traceflow" src="assets/media/tape-traceflow.jpg" width="480" height="270" alt="T1 · Precise pickup: Successful pickup" decoding="async"></div><figcaption><strong>Successful pickup</strong></figcaption></figure>
+<figure class="video-card traceflow"><div class="video-label"><span><i></i>TraceFlow</span><span class="speed">4× speed</span></div><div class="media-frame"><img data-rollout="fruits-traceflow" src="assets/media/fruits-traceflow.jpg" width="480" height="270" alt="T2 · Ordered packing: Correct sequence" decoding="async"></div><figcaption><strong>Correct sequence</strong></figcaption></figure>
+<figure class="video-card traceflow"><div class="video-label"><span><i></i>TraceFlow</span><span class="speed">4× speed</span></div><div class="media-frame"><img data-rollout="drawer-traceflow" src="assets/media/drawer-traceflow.jpg" width="480" height="270" alt="T3 · Drawer selection: Correct drawer" decoding="async"></div><figcaption><strong>Correct drawer</strong></figcaption></figure>
+      </div></div>
+      <p class="table-note">All clips play at 4× speed; loops are not time-synchronized. The TraceFlow drawer clip uses only source 00:00–01:17. On smaller screens, swipe horizontally to compare all three columns.</p>
+      <p class="evidence-note">Selected qualitative demonstrations, not a success-rate estimate. Aggregate trial results are reported below.</p>
+    </section>
+
+    <section class="about-band"><div class="section-wrap about-grid"><div><p class="eyebrow">The idea</p><h2>Experience changes.<br>Weights stay fixed.</h2></div><div><p>A frozen robot policy does not automatically benefit from its previous successes and failures. TraceFlow gives that experience a route back into action generation.</p><p>A <strong>trace</strong> is a time-ordered state–action record with one terminal success/failure label. The <strong>TraceBank</strong> starts from task-training traces and can later admit the robot’s own completed rollouts. At each policy query, the system retrieves comparable moments and uses their action windows to guide the frozen flow-matching action expert.</p><div class="principles"><span>Frozen policy</span><span>Binary outcome labels</span><span>No learned critic</span></div></div></div></section>
+
+    <section class="section-wrap method" id="method">
+      <div class="section-heading"><div><p class="eyebrow">02 / How it works</p><h2>From past outcomes to the next action.</h2></div><p>A retrieval path alongside the policy,<br>not a replacement for it.</p></div>
+      <figure class="method-figure"><a href="assets/method.png" target="_blank" rel="noopener" aria-label="Open method diagram at full resolution"><img src="assets/method.png" alt="TraceFlow pipeline: frozen VLM states query a TraceBank, progress-aligned candidates form an action guidance field, a frozen flow-matching expert generates actions, and completed rollouts are stacked for later rounds." loading="lazy"></a><figcaption>The guidance field lives in action-chunk space. Green indicates attraction toward successful action regions; red indicates repulsion from failed ones. Guidance is bounded and applied only during early integration.</figcaption></figure>
+      <div class="steps"><article><span>01</span><h3>Store experience</h3><p>Keep state anchors, action records, episode metadata, and a terminal outcome bit.</p></article><article><span>02</span><h3>Retrieve & align</h3><p>Match the current state and task progress to relevant success and failure action windows.</p></article><article><span>03</span><h3>Guide the action</h3><p>Build local action densities and bound their signed correction to the expert’s velocity.</p></article><article><span>04</span><h3>Stack new traces</h3><p>Align completed deployment traces and admit them for subsequent rounds, without policy updates.</p></article></div>
+    </section>
+
+    <section class="section-wrap results" id="results">
+      <div class="section-heading"><div><p class="eyebrow">03 / Evidence</p><h2>Better ordering. More completed tasks.</h2></div><p>Measured on the real robot.<br>Not inferred from the example videos.</p></div>
+      <div class="result-highlight"><div><p class="eyebrow">Ordered fruit packing · T2</p><h3>One additional TraceBank stack.</h3><p>On the same frozen base policy, ordered task success rises from 21/50 to 39/50 with TraceFlow, then to 47/50 after one stacking round.</p></div><div class="bars" aria-label="T2 ordered task success: baseline 42 percent, TraceFlow 78 percent, TraceFlow with stacking 94 percent"><div><span>Baseline</span><div class="bar-track"><i style="--value:42%;--bar:#92988f"></i></div><b>42%</b></div><div><span>TraceFlow</span><div class="bar-track"><i style="--value:78%;--bar:#2e8c6f"></i></div><b>78%</b></div><div><span>+ TraceBank-Stack</span><div class="bar-track"><i style="--value:94%;--bar:#175a46"></i></div><b>94%</b></div></div></div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Real-world experiment results"><table><caption>Real-world task performance</caption><thead><tr><th scope="col">Task</th><th scope="col">Method</th><th scope="col">Ordered success ↑</th><th scope="col">Wrong sequence ↓</th><th scope="col">Subtask success ↑</th></tr></thead><tbody>
+        <tr><th scope="rowgroup" rowspan="2">T1 · Tape + hammer<small>2 subtasks</small></th><td>Baseline</td><td>8/50</td><td>0/50</td><td>34/100</td></tr><tr class="ours"><td>TraceFlow</td><td>16/50</td><td>0/50</td><td>52/100</td></tr>
+        <tr class="group-start"><th scope="rowgroup" rowspan="3">T2 · Ordered fruits<small>3 subtasks</small></th><td>Baseline</td><td>21/50</td><td>20/50</td><td>123/150</td></tr><tr class="ours"><td>TraceFlow</td><td>39/50</td><td>2/50</td><td>129/150</td></tr><tr class="ours stacked"><td>TraceFlow + TraceBank-Stack</td><td>47/50</td><td>0/50</td><td>145/150</td></tr>
+        <tr class="group-start"><th scope="rowgroup" rowspan="2">T3 · Tape + cable<small>6 subtasks</small></th><td>Baseline</td><td>0/10</td><td>8/10</td><td>8/60</td></tr><tr class="ours"><td>TraceFlow</td><td>1/10</td><td>0/10</td><td>31/60</td></tr>
+      </tbody></table></div>
+      <p class="table-note">Ordered success requires all stages in sequence. Subtask success counts completed subtasks irrespective of order. T3 has only ten trials per setting; its result is descriptive, not a general reliability claim. The videos above are not labeled as the stacked setting.</p>
+      <div class="scope-note"><span aria-hidden="true">↗</span><div><h3>Where does it help?</h3><p>Simulation evaluates LIBERO, LIBERO-Plus (Long), and RoboMemArena. Gains are strongest in the studied Sequence and Transferring settings; Counting and Occlusion remain unresolved. Stacking is not monotonically beneficial, and bank outcome counts do not establish a universal positive/negative retrieval-budget rule.</p></div></div>
+
+      <div class="simulation-evidence">
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Simulation results from paper Table I"><table><caption>Simulation results · Paper Table I</caption><thead><tr><th>Evaluation</th><th>Backbone</th><th>Base</th><th>TraceFlow</th><th>Δ (percentage points)</th></tr></thead><tbody>
+      <tr><th scope="row">LIBERO four-suite</th><td>π₀.₅</td><td>96.85</td><td><b>98.30</b></td><td>+1.45</td></tr>
+<tr><th scope="row">LIBERO-Plus (Long)</th><td>π₀.₅</td><td>79.83</td><td><b>81.10</b></td><td>+1.27</td></tr>
+<tr><th scope="row">Arena Sequence + Transferring</th><td>π₀.₅</td><td>56.75 / 62.92</td><td><b>57.75 / 63.42</b></td><td>+1.00 / +0.50</td></tr>
+<tr><th scope="row">Arena Sequence</th><td>PrediMem</td><td>78.92 / 83.09</td><td><b>91.50 / 95.58</b></td><td>+12.58 / +12.49</td></tr>
+<tr><th scope="row">Arena Transferring</th><td>PrediMem</td><td>54.41 / 66.34</td><td><b>62.00 / 69.08</b></td><td>+7.59 / +2.74</td></tr>
+<tr><th scope="row">Arena Counting</th><td>PrediMem</td><td><b>26.61 / 56.12</b></td><td>25.49 / 53.50</td><td>−1.12 / −2.62</td></tr>
+<tr><th scope="row">Arena Occlusion</th><td>PrediMem</td><td><b>17.11 / 42.34</b></td><td>15.69 / 40.60</td><td>−1.42 / −1.74</td></tr>
+<tr><th scope="row">Arena Full26</th><td>PrediMem</td><td>34.92 / <b>56.01</b></td><td><b>34.99</b> / 55.04</td><td>+0.07 / −0.97</td></tr>
+      </tbody></table></div>
+      <p class="table-note">LIBERO reports SR (%); Arena reports TSR / CSR (%). Bold marks the better value. Each row compares the same checkpoint and evaluator. These are selected settings, not one shared configuration: LIBERO averages suite-wise selections (98.00% with one shared configuration); Sequence uses Upper–Direct with K₊ = 50; Transferring uses Joint round 2 with K₊/K₋ = 8/8. Full26 is a separate suite-conditioned aggregate, not the average of the selected rows. LIBERO-Plus (Long): 2,519 paired trials, p = 0.0733.</p>
+      <div class="stack-intro"><p class="eyebrow">Experience accumulation</p><h3>What happens when the TraceBank grows?</h3><p>Only the admission rule changes: <strong>Success-only</strong> adds new successes, <strong>Failure-only</strong> adds new failures, and <strong>Joint</strong> adds both. Previously stored traces remain retrievable; policy weights stay frozen. R denotes the collection round.</p></div>
+      <div class="stack-grid">
+      <figure><a href="assets/stack-libero.png" target="_blank" rel="noopener"><img src="assets/stack-libero.png" alt="LIBERO-10 ten-round stacking curves for Success-only, Failure-only and Joint admission" loading="lazy"></a><figcaption><h4>LIBERO-10 · 500 rollouts per round</h4><p>Success-only reaches 96.8% SR at R7, up from 94.8% at R1. Failure-only and Joint peak at R9 (95.6% and 96.2%), then finish at 95.2% and 94.4%. More experience does not guarantee a higher success rate.</p></figcaption></figure>
+      <figure><a href="assets/stack-arena.png" target="_blank" rel="noopener"><img src="assets/stack-arena.png" alt="Arena Transferring ten-round stacking curves and the shared 54 percent collector baseline" loading="lazy"></a><figcaption><h4>Arena Transferring · 200 rollouts per round</h4><p>Joint peaks early at R2 with 62.0% TSR, compared with the 54.0% shared collector (dashed line). Success-only peaks at R7 (59.0%); Failure-only at R1 (58.0%). Combining outcomes gives the highest observed peak, not a universal stopping rule.</p></figcaption></figure>
+      </div><p class="table-note">Observed single-lineage curves from the paper, not uncertainty estimates or predictions of an optimal future round. The two benchmarks have different collection budgets and should not be compared as equal-cost updates.</p>
+      </div>
+    </section>
+    <footer class="section-wrap"><a class="wordmark" href="#">Trace<span>Flow</span></a><p>The University of Hong Kong · Southern University of Science and Technology</p><a href="#resources">Project resources ↑</a></footer>
+  </main>
+</body>
+</html>

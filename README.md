@@ -1,4 +1,31 @@
-# TraceFlow
+# TraceFlow: Guiding Frozen Flow-Matching Robot Policies with Success and Failure Traces
+
+<p align="center">
+  <a href="https://arxiv.org/abs/2609.20646"><img src="https://img.shields.io/badge/arXiv-Paper-B31B1B?style=for-the-badge&amp;logo=arxiv&amp;logoColor=white" alt="arXiv Paper"></a>
+  <a href="https://zhangjiaxuan-Xuan.github.io/TraceFlow/"><img src="https://img.shields.io/badge/GitHub.io-Project_Page-2D8C6F?style=for-the-badge&amp;logo=githubpages&amp;logoColor=white" alt="GitHub.io Project Page"></a>
+  <a href="https://github.com/zhangjiaxuan-Xuan/TraceFlow"><img src="https://img.shields.io/badge/GitHub-Code-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub Code"></a>
+  <a href="https://modelscope.ai/models/JoeyXuan/traceflow-models"><img src="https://img.shields.io/badge/ModelScope-Models-624AFF?style=for-the-badge" alt="ModelScope Models"></a>
+  <a href="https://www.modelscope.ai/datasets/JoeyXuan/traceflow-realworld"><img src="https://img.shields.io/badge/ModelScope-Real--world_Data-2878FF?style=for-the-badge" alt="ModelScope Real-world Data"></a>
+</p>
+
+<p align="center">
+  Jiaxuan Zhang<sup>1,2</sup>, Ruizhe Liu<sup>1</sup>, Yu Zhang<sup>1</sup>, Yanchao Yang<sup>1,*</sup><br>
+  <sup>1</sup>The University of Hong Kong · <sup>2</sup>Southern University of Science and Technology<br>
+  All authors are affiliated with the HKU InfoBodied AI Lab. <sup>*</sup>Corresponding author.
+</p>
+
+<p align="center"><img src="assets/traceflow-method.png" alt="TraceFlow: frozen VLM states query a TraceBank; progress-aligned success and failure action windows define bounded early guidance for a frozen flow-matching action expert; completed rollouts are aligned and stacked for later rounds." width="100%"></p>
+
+**TraceFlow reuses successful and failed action experience to guide a frozen flow-matching robot policy, without deployment-time policy updates or a learned critic.** A trace is a time-ordered state–action record with one terminal success/failure label.
+
+1. **Store:** initialize the TraceBank from target-task training traces.
+2. **Retrieve and align:** match the current encoded state and progress to relevant action windows.
+3. **Guide:** construct local action densities from retrieved successes and failures, then apply a bounded correction during early flow integration.
+4. **Stack:** admit completed deployment traces for later rounds while keeping policy and retrieval weights frozen.
+
+The field operates over action chunks, not physical workspace coordinates. Success evidence attracts the evolving action; failure evidence repels it. Stacking gains are not monotonic, and Counting/Occlusion remain unresolved in the reported experiments.
+
+## Repository overview
 
 TraceFlow is a reproducible release for memory-guided vision-language-action evaluation on LIBERO, LIBERO-Plus, and RoboMemArena. It includes the evaluation code, release-locked configurations, retrieval-head training code, and TraceBankStack continual-learning workflows.
 
@@ -287,6 +314,22 @@ conda run -n traceflow-openpi python scripts/train/train_retrieval_head.py \
 Use `--variant lower` or `--variant upper` for a single tower, and `--resume` to continue from `last.pt`. The output includes runtime-compatible `best.pt` and `last.pt`, `metrics.jsonl`, deterministic split indices, and a SHA-256 provenance manifest.
 
 ## Validation and licensing
+
+### Citation
+
+If you use TraceFlow in your research, please cite:
+
+```bibtex
+@article{zhang2026traceflow,
+  title   = {TraceFlow: Guiding Frozen Flow-Matching Robot Policies with Success and Failure Traces},
+  author  = {Zhang, Jiaxuan and Liu, Ruizhe and Zhang, Yu and Yang, Yanchao},
+  journal = {arXiv preprint arXiv:2609.20646},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2609.20646}
+}
+```
+
+### Validation and license scope
 
 Run the complete static release gate after modifying code or documentation:
 
