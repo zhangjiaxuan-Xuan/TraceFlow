@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  Jiaxuan Zhang<sup>1,2</sup>, Ruizhe Liu<sup>1</sup>, Yu Zhang<sup>1</sup>, Yanchao Yang<sup>1,*</sup><br>
+  <a href="https://zhangjiaxuan-xuan.github.io/">Jiaxuan Zhang</a><sup>1,2</sup>, <a href="https://zrllrz.github.io/">Ruizhe Liu</a><sup>1</sup>, <a href="https://franklin-zhang0.github.io/">Yu Zhang</a><sup>1</sup>, <a href="https://yanchaoyang.github.io/">Yanchao Yang</a><sup>1,*</sup><br>
   <sup>1</sup>The University of Hong Kong · <sup>2</sup>Southern University of Science and Technology<br>
   All authors are affiliated with the HKU InfoBodied AI Lab. <sup>*</sup>Corresponding author.
 </p>
