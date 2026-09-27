@@ -3,12 +3,51 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="TraceFlow guides frozen flow-matching robot policies using progress-aligned success and failure traces, without deployment-time policy updates.">
+  <meta name="description" content="TraceFlow: success and failure trace guidance for frozen flow-matching robot policies. Official project page with paper, code, models, and real-world robot data.">
   <meta name="theme-color" content="#f7f8f4">
-  <meta property="og:title" content="TraceFlow — Learning from outcomes, without changing weights">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://zhangjiaxuan-xuan.github.io/TraceFlow/">
+  <link rel="sitemap" type="application/xml" href="sitemap.xml">
+  <meta property="og:title" content="TraceFlow: Guiding Frozen Flow-Matching Robot Policies with Success and Failure Traces">
   <meta property="og:description" content="Progress-aligned experience guidance for frozen robot policies. Explore real-world comparisons, the method, and results.">
   <meta property="og:type" content="website">
-  <title>TraceFlow | Success and Failure Trace Guidance</title>
+  <meta property="og:url" content="https://zhangjiaxuan-xuan.github.io/TraceFlow/">
+  <meta property="og:image" content="https://zhangjiaxuan-xuan.github.io/TraceFlow/assets/method.png">
+  <meta property="og:image:alt" content="TraceFlow framework: progress-aligned success and failure traces guide a frozen robot action expert.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TraceFlow | Frozen Robot Policy Guidance">
+  <meta name="twitter:description" content="Official project page: success and failure trace guidance for flow-matching robot policies. Paper, code, models, and real-world data.">
+  <meta name="twitter:image" content="https://zhangjiaxuan-xuan.github.io/TraceFlow/assets/method.png">
+  <meta name="citation_title" content="TraceFlow: Guiding Frozen Flow-Matching Robot Policies with Success and Failure Traces">
+  <meta name="citation_author" content="Jiaxuan Zhang">
+  <meta name="citation_author" content="Ruizhe Liu">
+  <meta name="citation_author" content="Yu Zhang">
+  <meta name="citation_author" content="Yanchao Yang">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2609.20646">
+  <title>TraceFlow: Guiding Frozen Flow-Matching Robot Policies with Success and Failure Traces</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "@id": "https://zhangjiaxuan-xuan.github.io/TraceFlow/#paper",
+    "headline": "TraceFlow: Guiding Frozen Flow-Matching Robot Policies with Success and Failure Traces",
+    "name": "TraceFlow: Guiding Frozen Flow-Matching Robot Policies with Success and Failure Traces",
+    "url": "https://zhangjiaxuan-xuan.github.io/TraceFlow/",
+    "sameAs": "https://arxiv.org/abs/2609.20646",
+    "identifier": "arXiv:2609.20646",
+    "image": "https://zhangjiaxuan-xuan.github.io/TraceFlow/assets/method.png",
+    "inLanguage": "en",
+    "description": "Progress-aligned success and failure action traces provide bounded early guidance to frozen flow-matching robot policies, without deployment-time policy updates.",
+    "author": [
+      {"@type": "Person", "name": "Jiaxuan Zhang", "url": "https://zhangjiaxuan-xuan.github.io/"},
+      {"@type": "Person", "name": "Ruizhe Liu", "url": "https://zrllrz.github.io/"},
+      {"@type": "Person", "name": "Yu Zhang", "url": "https://franklin-zhang0.github.io/"},
+      {"@type": "Person", "name": "Yanchao Yang", "url": "https://yanchaoyang.github.io/"}
+    ],
+    "keywords": ["robot manipulation", "vision-language-action models", "flow matching", "action guidance", "experience reuse", "TraceBank"],
+    "associatedMedia": {"@type": "MediaObject", "contentUrl": "https://arxiv.org/pdf/2609.20646", "encodingFormat": "application/pdf"}
+  }
+  </script>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script src="site-config.js" defer></script>
@@ -27,10 +66,10 @@
       <p class="affiliations"><span><sup>1</sup> The University of Hong Kong</span><span><sup>2</sup> Southern University of Science and Technology</span></p>
       <p class="correspondence">* Corresponding author<span id="contact"></span></p>
       <div id="resources" class="resource-buttons" aria-label="Project resources">
-        <a class="resource disabled" data-resource="arxiv" aria-disabled="true"><img class="brand-icon" src="assets/icons/arxiv.svg" alt="" aria-hidden="true"><span>Paper<small>Coming soon</small></span></a>
-        <a class="resource disabled" data-resource="github" aria-disabled="true"><img class="brand-icon" src="assets/icons/github.svg" alt="" aria-hidden="true"><span>Code<small>Coming soon</small></span></a>
-        <a class="resource disabled" data-resource="modelscope" aria-disabled="true"><img class="brand-icon" src="assets/icons/modelscope.ico" alt="" aria-hidden="true"><span>Model<small>Coming soon</small></span></a>
-        <a class="resource disabled" data-resource="data" aria-disabled="true"><img class="brand-icon" src="assets/icons/modelscope.ico" alt="" aria-hidden="true"><span>Real-world Data<small>Coming soon</small></span></a>
+        <a class="resource" data-resource="arxiv" href="https://arxiv.org/abs/2609.20646" target="_blank" rel="noopener noreferrer"><img class="brand-icon" src="assets/icons/arxiv.svg" alt="" aria-hidden="true"><span>Paper<small>Open resource ↗</small></span></a>
+        <a class="resource" data-resource="github" href="https://github.com/zhangjiaxuan-Xuan/TraceFlow" target="_blank" rel="noopener noreferrer"><img class="brand-icon" src="assets/icons/github.svg" alt="" aria-hidden="true"><span>Code<small>Open resource ↗</small></span></a>
+        <a class="resource" data-resource="modelscope" href="https://modelscope.ai/models/JoeyXuan/traceflow-models" target="_blank" rel="noopener noreferrer"><img class="brand-icon" src="assets/icons/modelscope.ico" alt="" aria-hidden="true"><span>Model<small>Open resource ↗</small></span></a>
+        <a class="resource" data-resource="data" href="https://www.modelscope.ai/datasets/JoeyXuan/traceflow-realworld" target="_blank" rel="noopener noreferrer"><img class="brand-icon" src="assets/icons/modelscope.ico" alt="" aria-hidden="true"><span>Real-world Data<small>Open resource ↗</small></span></a>
       </div>
       <p class="release-note">Explore the paper, code, models, and real-world dataset.</p>
     </section>
